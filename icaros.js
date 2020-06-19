@@ -1,15 +1,16 @@
 const {Collection, Client, Discord} = require('discord.js');
 const fs = require('fs');
 const client = new Client;
-
-//RoVer's Public API Fetch
-
-
+const mongoose = require('mongoose');
 const config = require('./config.json');
 const { token } = require('./config.json');
 var prefix = "A!";
 client.commands = new Collection();
 client.aliases = new Collection();
+mongoose.connect("mongodb+srv://ProjectIcaros:BdgaP!68YaA9k5t@cluster0-wsyf8.mongodb.net/test",{
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+});
 client.categories = fs.readdirSync('./commands/');
 ['command'].forEach(handler=>{
     require(`./handler/${handler}`)(client);
