@@ -1,4 +1,4 @@
-const warns = require("../../models/warns");
+const warns = require('../../Models/warns');
 const Discord = require('discord.js');
 module.exports = {
   name: "clearwarns",
