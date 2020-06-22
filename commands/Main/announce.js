@@ -10,14 +10,14 @@ module.exports = {
         let MSG = message.content.split(" ").slice(2).join(" ")
         if(!MSG) return message.channel.send("You did not specified anything to announce.")
         if(MSG.lenght < 30) return message.channel.send("Text is too short to be announced.")
-        const _ = new MessageEmbed()
+        const embed = new MessageEmbed()
             .setTitle(`**Announcement by **${message.member.displayName}:`)
             .setDescription(`${MSG}`)
             .setColor('34cfeb')
             .setFooter("Provided by Alexandra.AIC")
             .setTimestamp()
         
-        chnl.send(_)
-        message.delete()
+            const messageToEdit = await chnl.send("@here", embed)
+messageToEdit.edit(embed)
     }
 }
