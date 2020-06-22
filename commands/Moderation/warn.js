@@ -8,6 +8,7 @@ module.exports={
         let user = message.mentions.users.first()
         if(!user) return message.channel.send('⚠️ **Please mention the user you wish to warn** ⚠️')
         if(!args.slice(1).join(" ")) return message.channel.send('⚠️ **Please state a reason** ⚠️')
+        if(user === message.author) return message.channel.send('Dont warn yourself! Love yourself!')
         warns.findOne({ Guild: message.guild.id, User: user.id },async(err,data)=>{
             if(err) console.log(err)
             if(!data){
