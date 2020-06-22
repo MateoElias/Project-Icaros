@@ -17,7 +17,7 @@ module.exports = {
             .setFooter("Provided by Alexandra.AIC")
             .setTimestamp()
         
-            chnl.send("@here").then(m => m.delete({timeout: 1000}))
+            chnl.send("@here").then(m => m.delete({timeout: 2000}))
         chnl.send(embed)
     }
 }
