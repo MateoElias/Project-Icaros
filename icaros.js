@@ -16,8 +16,17 @@ client.categories = fs.readdirSync('./commands/');
     require(`./handler/${handler}`)(client);
 });
 client.on('ready',()=>{
-    client.user.setActivity(`with the site's CCTV | ${prefix}help`);
-    console.log("Alexandra.AIC is up and running")
+    let botStatus = [
+        "A!help",
+        `over ${client.users.cache.size} users!`,
+        'the site\'s CCTV'
+      ]
+    
+    setInterval(function() {
+        let status = botStatus[Math.floor(Math.random() * botStatus.length)];
+        client.user.setActivity(status, {type: "WATCHING"});
+    
+        }, 7000)
 })
 client.on('message', async message =>{
     if(message.author.bot) return;
