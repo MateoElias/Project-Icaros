@@ -17,6 +17,8 @@ module.exports = {
             .setFooter("Provided by Alexandra.AIC")
             .setTimestamp()
         
-        chnl.send("@here").then(chnl.edit('@here', {embeds: embed}))
+            chnl.send("@here").then(msg => {
+                msg.edit(embed);
+                });
     }
 }
