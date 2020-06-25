@@ -16,6 +16,7 @@ client.categories = fs.readdirSync('./commands/');
     require(`./handler/${handler}`)(client);
 });
 client.on('ready',()=>{
+    console.log('Alexandra.AIC Is up and running!')
     let botStatus = [
         "A!help",
         `over ${client.users.cache.size} users!`,

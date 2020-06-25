@@ -6,7 +6,7 @@ module.exports={
     category: "moderation",
     run: (client, message, args) => {
         let user = message.mentions.users.first()
-        if(user === message.author) return message.channel.send('Dont warn yourself! Love yourself!')
+	if(user === message.author) return;
         if(!user) return message.channel.send('⚠️ **Please mention the user you wish to warn** ⚠️')
         if(!args.slice(1).join(" ")) return message.channel.send('⚠️ **Please state a reason** ⚠️')
         warns.findOne({ Guild: message.guild.id, User: user.id },async(err,data)=>{
@@ -47,7 +47,20 @@ module.exports={
                     .setTimestamp()
                     .setFooter('I really wasn\'t expecting this from you.')
 
-                message.channel.send(embed2)
+                var dm = new Discord.MessageEmbed()
+                    .setAuthor(`You have been warned at: ${message.guild.name}`, message.guild.iconURL())
+                    .setDescription(`You have recieved a warning in ${message.guild.name}! \n You can see more of the details below`)
+                    .addFields(
+                        { name: '__Moderator:__', value: `\` ${message.member.displayName} \``},
+                        { name: '__Reason:__', value: `**${args.slice(1).join(" ")}**` },
+                        { name: '__Warn Count:__', value: `${data.Warns.length} warns.` }
+                    )
+                    .setColor('34cfeb')
+                    .setFooter('You?!? Seriously??')
+                    .setTimestamp()
+
+                message.channel.send(embed2),
+                (user.send(dm))
             }
         })
     }
