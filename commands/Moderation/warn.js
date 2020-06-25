@@ -74,7 +74,8 @@ module.exports={
                     .setTimestamp()
 
                 message.channel.send(embed2),
-                (user.send(dm2))
+                (user.send(dm2)),
+                message.delete()
             }
         })
     }
