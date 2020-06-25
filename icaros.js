@@ -6,7 +6,7 @@ const token = process.env.TOKEN;
 var prefix = "A!";
 client.commands = new Collection();
 client.aliases = new Collection();
-mongoose.connect("mongodb+srv://ProjectIcaros:BdgaP!68YaA9k5t@cluster0-wsyf8.mongodb.net/test",{
+mongoose.connect(process.env.mongodb,{
     useUnifiedTopology: true,
     useNewUrlParser: true,
 });
