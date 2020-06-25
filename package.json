@@ -1,0 +1,28 @@
+{
+  "name": "alexandra-icaros",
+  "version": "3.0.0",
+  "description": "Alexandra.AIC reprogrammed in Discord.js V12.",
+  "main": "icaros.js",
+  "scripts": {
+    "test": "echo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaosinsurgent/Project-Icaros.git"
+  },
+  "author": "Eliaaaaaas#0937",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/chaosinsurgent/Project-Icaros/issues"
+  },
+  "homepage": "https://github.com/chaosinsurgent/Project-Icaros#readme",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "ffmpeg-static": "^4.2.2",
+    "mongoose": "^5.9.18",
+    "node-fetch": "^2.6.0",
+    "node-pre-gyp": "^0.15.0",
+    "opusscript": "0.0.7",
+    "salvage.db": "^1.1.3"
+  }
+}
