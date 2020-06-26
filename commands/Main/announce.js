@@ -6,7 +6,7 @@ module.exports = {
     description: "Announcement Command",
     run: async (client, message, args) => {
         let chnl = message.mentions.channels.first()
-        if (!chnl) return message.channel.send("Please, specify the channel where you want the announcemen to be.")
+        if (!chnl) return message.channel.send("Please, specify the channel where you want the announcement to be.")
         let MSG = message.content.split(" ").slice(2).join(" ")
         if (!MSG) return message.channel.send("You did not specified anything to announce.")
         const embed = new MessageEmbed()
@@ -16,9 +16,11 @@ module.exports = {
             .setFooter("Provided by Alexandra.AIC")
             .setTimestamp()
 
-        const timeout = 500
-        setTimeout(() => {
-            chnl.send("@here")
-        }, timeout);
+            const timeout = 500
+            setTimeout(() => {
+                const msg = "@here"
+                chnl.send(msg)
+                msg.delete().then(chnl.send(embed))
+            }, timeout);
     }
 }
