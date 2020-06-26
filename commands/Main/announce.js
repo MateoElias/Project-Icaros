@@ -16,11 +16,11 @@ module.exports = {
             .setFooter("Provided by Alexandra.AIC")
             .setTimestamp()
 
-            const timeout = 500
+            const timeout = 1000
             setTimeout(() => {
-                const msg = "@here"
-                chnl.send(msg)
-                msg.delete().then(chnl.send(embed))
+                chnl.send('@here'),
+                message.delete('@here'),
+                chnl.send(embed)
             }, timeout);
     }
 }
