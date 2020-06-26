@@ -18,5 +18,6 @@ module.exports = {
 
             chnl.send("@here").then(m => m.delete());
             chnl.send(embed)
+            message.delete()
     }
 }
