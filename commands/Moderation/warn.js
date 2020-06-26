@@ -45,7 +45,8 @@ module.exports={
                     .setTimestamp()
 
                 message.channel.send(embed),
-                (user.send(dm))
+                (user.send(dm)),
+                message.delete()
             }else{
                 data.Warns.unshift({
                     Moderator: message.author.username,
