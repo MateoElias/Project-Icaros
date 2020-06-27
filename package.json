@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/chaosinsurgent/Project-Icaros#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "discord.js": "^12.2.0",
     "ffmpeg-static": "^4.2.2",
     "mongoose": "^5.9.18",
+    "noblox.js": "^4.6.1",
     "node-fetch": "^2.6.0",
     "node-pre-gyp": "^0.15.0",
     "opusscript": "0.0.7",

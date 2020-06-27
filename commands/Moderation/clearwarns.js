@@ -34,8 +34,8 @@ module.exports = {
             .setFooter('Forgive and forget, that\'s what I always say!')
             .setTimestamp()
 
-          message.channel.send(
-           embed2)
+          message.channel.send(embed2)
+          message.delete()
         } else {
           data.Warns.unshift({
             Moderator: message.author.id,
@@ -48,7 +48,9 @@ module.exports = {
             .setColor('34cfeb')
             .setFooter('Forgive and forget, that\'s what I always say!')
             .setTimestamp()
+            
           message.channel.send(embed)
+          message.delete()
         }
       }
     );
