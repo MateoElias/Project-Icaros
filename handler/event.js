@@ -5,7 +5,7 @@ module.exports=(client)=>{
         for(let file of events){
             const evt = require(`../events/${dirs}/${file}`);
             let eName = file.split('.')[0];
-            client.on(eName,evt.bind(null,bot));
+            client.on(eName,evt.bind(null,client));
         };
     };
     ["client", "guild"].forEach(x=>load(x));
