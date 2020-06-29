@@ -14,5 +14,12 @@ client.categories = fs.readdirSync('./commands/');
 ['command', 'event'].forEach(handler => {
     require(`./handler/${handler}`)(client);
 });
-
+client.on("ready", () => {
+  require("./events/client/ready")(client);
+});
+client.on("message", async (message) => {
+  message.member; //-- GuildMember based
+  message.author; //-- User based
+  require("./events/guild/message")(client, message);
+});
 client.login(token)
