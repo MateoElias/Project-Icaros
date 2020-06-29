@@ -30,7 +30,6 @@ client.categories = fs.readdirSync('./commands/');
     
         }, 7000)
     }) 
-}
 client.on('message', async message => {
         if (message.author.bot) return;
         if (!message.content.startsWith(prefix)) return;
@@ -44,5 +43,4 @@ client.on('message', async message => {
         if (command) command.run(client, message, args)
     })
 
-}
 client.login(token)
