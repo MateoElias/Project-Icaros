@@ -8,7 +8,7 @@ module.exports = {
 
         // Channel Definition
         let chnl = message.mentions.channels.first()
-        if (!chnl) return message.channel.send("Please, specify the channel where you want the announcemen to be.")
+        if (!chnl) return message.channel.send("Please, specify the channel where you want the announcemen to be.").then(message.delete())
         
         //Message Definition
         let MSG = message.content.split(" ").slice(2).join(" ")
@@ -16,8 +16,8 @@ module.exports = {
         .setTitle('Your announcement is too short to be announced.')
         .setFooter('Make sure your your announcement is longer than 30 characters!')
         .setColor('34cfeb')
-        if (MSG.length < 30) return message.channel.send(short)
-        if (!MSG) return message.channel.send("You did not specified anything to announce.")
+        if (MSG.length < 30) return message.channel.send(short).then(message.delete())
+        if (!MSG) return message.channel.send("You did not specified anything to announce.").then(message.delete())
 
         const embed = new MessageEmbed()
             .setTitle(`**Announcement by **${message.member.displayName}:`)
