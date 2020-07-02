@@ -21,10 +21,11 @@ module.exports = {
 
         const embed = new MessageEmbed()
             .setTitle(`**Announcement by **${message.member.displayName}:`)
+            .setAuthor(".|SCPF|. Special Containment Procedures Foundation", guild.iconURL(), 'https://www.roblox.com/groups/5137119/Special-Containment-Procedures-Foundation-SCPF#!/about')
             .setDescription(`${MSG}`)
             .setColor('34cfeb')
-            .setFooter("Provided by Alexandra.AIC")
             .setTimestamp()
+            .setFooter("Alexandra.AIC | Developed by: O5-6", 'https://cdn.discordapp.com/attachments/667913030629195786/728325820715892736/Alexandra.png')
 
             chnl.send("@here").then(m => m.delete());
             chnl.send(embed)
