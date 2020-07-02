@@ -21,7 +21,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
             .setTitle(`**Announcement by **${message.member.displayName}:`)
-            .setAuthor(".|SCPF|. Special Containment Procedures Foundation", guild.iconURL(), 'https://www.roblox.com/groups/5137119/Special-Containment-Procedures-Foundation-SCPF#!/about')
+            .setAuthor(".|SCPF|. Special Containment Procedures Foundation", message.guild.iconURL(), 'https://www.roblox.com/groups/5137119/Special-Containment-Procedures-Foundation-SCPF#!/about')
             .setDescription(`${MSG}`)
             .setColor('34cfeb')
             .setTimestamp()
