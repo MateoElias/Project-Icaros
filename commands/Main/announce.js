@@ -8,15 +8,19 @@ module.exports = {
 
         // Channel Definition
         let chnl = message.mentions.channels.first()
-        if (!chnl) return message.channel.send("Please, specify the channel where you want the announcemen to be.").then(message.delete())
+	var nochnl = new MessageEmbed()
+        .setTitle('You did not specified the channel you want the announcement in.')
+        .setFooter('Pleas specify the channel right after the command. "A!announce #channel"')
+        .setColor('34cfeb')
+        if (!chnl) return message.channel.send(nochnl).then(message.delete())
         
         //Message Definition
         let MSG = message.content.split(" ").slice(2).join(" ")
         var short = new MessageEmbed()
         .setTitle('Your announcement is too short to be announced.')
-        .setFooter('Make sure your your announcement is longer than 30 characters!')
+        .setFooter('Make sure your your announcement is longer than 10 characters!')
         .setColor('34cfeb')
-        if (MSG.length < 30) return message.channel.send(short).then(message.delete())
+        if (MSG.length < 10) return message.channel.send(short).then(message.delete())
         if (!MSG) return message.channel.send("You did not specified anything to announce.").then(message.delete())
 
         const embed = new MessageEmbed()
