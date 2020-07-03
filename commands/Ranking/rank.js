@@ -5,13 +5,13 @@ const groupid = 5137119;
 const maximumRank = 80; 
 module.exports = {
     name: "rank",
-    description: "Ranks a user in a ROBLOX group",
+    description: "Ranks a user in a noblox group",
     category: "Ranking",
     run: (client, message, args) => {
 
         async function cookieLogin() {
             try {
-                await roblox.cookieLogin(cookie);
+                await noblox.cookieLogin(cookie);
             } catch (err) {
                 login();
                 return console.log('There was an error while logging into the account with the cookie: ' + err);
@@ -34,7 +34,7 @@ module.exports = {
             .setFooter("Make sure the user is in the group, or check spelling.")
             .setColor('34cfeb')
         try {
-            id = await roblox.getIdFromUsername(username);
+            id = await noblox.getIdFromUsername(username);
         } catch {
             return message.channel.send(noid).then(message.delete());
         }
@@ -46,7 +46,7 @@ module.exports = {
         if (!rank) {
             return message.channel.send(noid2).then(message.delete());
         }
-        let oldRankId = await roblox.getRankInGroup(groupid, id);
+        let oldRankId = await noblox.getRankInGroup(groupid, id);
         if (oldRankId == 0) {
             return message.channel.send("This user isn't in the group.");
         }
@@ -56,9 +56,9 @@ module.exports = {
         if (rank > maximumRank) {
             return message.channel.send("I can't rank that high.");
         }
-        let oldRankName = await roblox.getRankNameInGroup(groupid, id);
+        let oldRankName = await noblox.getRankNameInGroup(groupid, id);
         try {
-            await roblox.setRank(groupid, id, rank);
+            await noblox.setRank(groupid, id, rank);
         } catch (err) {
 
             return message.channel.send("There was an error while ranking this user: " + err);
@@ -68,7 +68,7 @@ module.exports = {
             .setTitle("User Ranked Successfully")
             .addField('__**User:**__', `${username}`, true)
             .addField("__**Last Rank:**__", `${oldRankName}`, true)
-            .addField("__**Newer Rank:**__", `${await roblox.getRankNameInGroup(groupid, id)}`, true)
+            .addField("__**Newer Rank:**__", `${await noblox.getRankNameInGroup(groupid, id)}`, true)
             .setFooter("Ranking System Provided by: Glacon.AIC")
             .setAuthor("SCPF Ranking System", 'https://scp-wiki.wdfiles.com/local--files/aiad-homescreen/glacon_00.png')
             .setTimestamp()
