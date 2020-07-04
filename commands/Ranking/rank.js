@@ -19,7 +19,6 @@ module.exports = {
             return console.log('Logged in!');
         }
 
-        const args = message.content.slice(prefix.length).split(' ');
         let username = args[1];
         var nouser = new Discord.MessageEmbed()
             .setTitle("You did not specified a user!")
