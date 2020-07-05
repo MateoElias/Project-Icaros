@@ -5,7 +5,7 @@ module.exports = {
     run: async(client, message, args) => {
 
         // Channel Definition
-        let channel = message.mentions.channels.first()
+        let chnl = message.mentions.channels.first()
         var nochnl = new Discord.MessageEmbed()
         .setTitle('You did not specified the channel you want the announcement in.')
         .setFooter('Pleas specify the channel right after the command. "A!announce #channel"')
