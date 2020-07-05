@@ -12,13 +12,6 @@ module.exports = {
         .setColor('34cfeb')
         if (!channel) return message.channel.send(nochnl).then(message.delete())
 
-        // Message Definition
-        let message = message.content.split(" ").slice(2).join(" ")
-        var short = new Discord.MessageEmbed()
-        .setTitle('Your announcement is too short to be announced.')
-        .setFooter('Make sure your your announcement is longer than 10 characters!')
-        .setColor('34cfeb')
-
         var ec = new Discord.MessageEmbed()
         .setAuthor(`Announcement by ${message.member.DisplayName}:`)
         .setTitle("Ethics Committe Application Process")
