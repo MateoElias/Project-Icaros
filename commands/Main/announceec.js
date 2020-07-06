@@ -42,7 +42,7 @@ module.exports = {
                 inline: true
             }, {
                 name: '**Further Information**',
-                value: `${MSG}`,
+                value: MSG,
                 inline: true
             }, )
             .setThumbnail('https://cdn.discordapp.com/attachments/667913030629195786/728322966999400599/ec.png')
