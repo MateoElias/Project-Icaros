@@ -31,6 +31,8 @@ module.exports = {
             .setThumbnail('https://cdn.discordapp.com/attachments/667913030629195786/728322966999400599/ec.png')
             .setColor('3b503b')
 
+            if (!MSG) chnl.send("@everyone").then(m => m.delete()).then(chnl.send(ethics)).then(message.delete())
+
         var ethics2 = new MessageEmbed()
             .setAuthor(`Announcement by ${message.member.DisplayName}:`)
             .setTitle("Ethics Committe Application Process")
@@ -40,13 +42,13 @@ module.exports = {
                 inline: true
             }, {
                 name: '**Further Information**',
-                value: `${MSG}`
+                value: `${MSG}`,
+                inline: true
             }, )
             .setThumbnail('https://cdn.discordapp.com/attachments/667913030629195786/728322966999400599/ec.png')
             .setColor('3b503b')
 
-        if (!MSG) chnl.send("@everyone").then(m => m.delete()).then(chnl.send(ethics)).then(message.delete())
         chnl.send(ethics2)
-        message.delete()
+
     }
 }
