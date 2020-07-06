@@ -45,10 +45,8 @@ module.exports = {
             .setThumbnail('https://cdn.discordapp.com/attachments/667913030629195786/728322966999400599/ec.png')
             .setColor('3b503b')
 
-        if (!MSG) {
-            chnl.send("@everyone").then(m => m.delete()).then(chnl.send(ethics))
-        } else {
-            chnl.send("@everyone").then(m => m.delete()).then(chnl.send(ethics2))
-        }
+        if (!MSG) chnl.send("@everyone").then(m => m.delete()).then(chnl.send(ethics)).then(message.delete())
+        chnl.send(ethics2)
+        message.delete()
     }
 }
