@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const noblox = require('noblox.js');
 const https = require('https');
 const groupId = 5137119;
 const guildId = 726211885288128581;
@@ -7,6 +6,7 @@ module.exports = {
     name: "verify",
     description: "Verification Command (Experimental)",
     run: async (client, message, args) => {
+        const noblox = require('noblox.js');
         let data = " "
         https.get("https://verify.eryn.io/api/user/".message.author.id, (resp) => {
             resp.on(`data`, (chunk) => { data += chunk; });
