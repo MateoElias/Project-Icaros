@@ -18,7 +18,7 @@ if (data.status == "ok") {
     var robloxUsername = data.robloxUsername; 
     var myGuild = client.guilds.cache.find(g => g.id == guildId);
     var guildMember = myGuild.member(message.author);
-    var isInGroup = (await noblox.getRankInGroup(groupId, robloxId)) != 0;
+    var isInGroup = await noblox.getRankInGroup(groupId, robloxId) != 0;
     
     if (isInGroup) {
         guildMember = await guildMember.edit({nick: robloxUsername});
