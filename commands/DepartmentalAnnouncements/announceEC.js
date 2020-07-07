@@ -10,7 +10,7 @@ module.exports = {
         let chnl = message.mentions.channels.first()
         var nochnl = new MessageEmbed()
             .setTitle('You did not specified the channel you want the announcement in.')
-            .setFooter('Pleas specify the channel right after the command. "A!announce #channel"')
+            .setFooter('Please specify the channel right after the command. "A!announceec #channel"')
             .setColor('34cfeb')
         if (!chnl) return message.channel.send(nochnl).then(message.delete())
 
@@ -26,7 +26,8 @@ module.exports = {
                 inline: true
             }, {
                 name: '**Further Information**',
-                value: "Direct all concerns to the Committee Chairman."
+                value: "Direct all concerns to the Committee Chairman.",
+                inline: true
             }, )
             .setFooter("Recruitment Announcement")
             .setThumbnail('https://cdn.discordapp.com/attachments/667913030629195786/728322966999400599/ec.png')
