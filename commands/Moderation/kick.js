@@ -50,6 +50,7 @@ module.exports = {
         } catch (e) {
             return message.channel.send(error3)
         }
+	console.log(user)
 
     }
 
