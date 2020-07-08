@@ -7,13 +7,14 @@ module.exports = {
         if (!message.member.hasPermission('KICK_MEMBERS')) return;
 
 
-        let pwned = message.mentions.users.first()
+        let user = message.mentions.users.first()
+        const member = message.guild.member(user);
         var error1 = new Discord.MessageEmbed()
             .setTitle("You did not mentioned the user you wanted to kick!")
             .setFooter("Remember to mention the user right before the command! \"A!kick @user\" ")
             .setColor('34cfeb')
 
-        if (!pwned) return (message.channel.send(error1)).then(message.delete())
+        if (!user) return (message.channel.send(error1)).then(message.delete())
 
         let reason = args.slice(1).join(" ")
         var error2 = new Discord.MessageEmbed()
@@ -25,7 +26,7 @@ module.exports = {
 
         var success = new Discord.MessageEmbed()
             .setTitle("Success!")
-            .setDescription(`**${pwned.tag}** has been kicked successfully. \n You can see more of the details below:`)
+            .setDescription(`**${member.tag}** has been kicked successfully. \n You can see more of the details below:`)
             .addFields({
                 name: "__Moderator:__",
                 value: `\`${message.member.displayName}\``,
@@ -45,7 +46,7 @@ module.exports = {
         .setColor('34cfeb')
 
         try {
-            await pwned.kick();
+            await member.kick(reason);
             await message.channel.send(success)
         } catch (e) {
             return message.channel.send(error3)
