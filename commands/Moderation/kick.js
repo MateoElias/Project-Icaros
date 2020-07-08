@@ -61,7 +61,7 @@ module.exports = {
         member.send(dm)
 
         try {
-            await member.kick(reason).then(user.send(dm));
+            await member.kick(reason).then(member.send(dm));
             await message.channel.send(success)
         } catch (e) {
             return message.channel.send(error3)
