@@ -26,7 +26,7 @@ module.exports = {
 
         var success = new Discord.MessageEmbed()
             .setTitle("Success!")
-            .setDescription(`**${member.tag}** has been kicked successfully. \n You can see more of the details below:`)
+            .setDescription(`**${user.tag}** has been kicked successfully. \n You can see more of the details below:`)
             .addFields({
                 name: "__Moderator:__",
                 value: `\`${message.member.displayName}\``,
