@@ -40,10 +40,10 @@ module.exports = {
             .setColor('34cfeb')
 
         var error3 = new Discord.MessageEmbed()
-        .setTitle("Error")
-        .setDescription("I was unable to find that user, maybe it's not on the server anymore.")
-        .setFooter("Remember to properly mention the user, or check if the user is on the server.")
-        .setColor('34cfeb')
+            .setTitle("Error")
+            .setDescription("I was unable to find that user, maybe it's not on the server anymore.")
+            .setFooter("Remember to properly mention the user, or check if the user is on the server.")
+            .setColor('34cfeb')
 
         try {
             await member.kick(reason);
@@ -51,7 +51,21 @@ module.exports = {
         } catch (e) {
             return message.channel.send(error3)
         }
-	console.log(user)
+        var dm = new Discord.MessageEmbed()
+            .setAuthor(`You have been kicked from: ${message.guild.name}`, message.guild.iconURL())
+            .setDescription(`You have recieved a warning in ${message.guild.name}! \n You can see more of the details below`)
+            .addFields({
+                name: '__Moderator:__',
+                value: `\` ${message.member.displayName} \``
+            }, {
+                name: '__Reason:__',
+                value: `**${reason}**`
+            })
+            .setColor('34cfeb')
+            .setFooter('Well, that was one wayt to go, wasn\'t it?')
+            .setTimestamp()
+        member.send(dm)
+        message.delete()
 
     }
 
