@@ -45,12 +45,6 @@ module.exports = {
             .setFooter("Remember to properly mention the user, or check if the user is on the server.")
             .setColor('34cfeb')
 
-        try {
-            await member.kick(reason);
-            await message.channel.send(success)
-        } catch (e) {
-            return message.channel.send(error3)
-        }
         var dm = new Discord.MessageEmbed()
             .setAuthor(`You have been kicked from: ${message.guild.name}`, message.guild.iconURL())
             .setDescription(`You have recieved a warning in ${message.guild.name}! \n You can see more of the details below`)
@@ -65,8 +59,14 @@ module.exports = {
             .setFooter('Well, that was one wayt to go, wasn\'t it?')
             .setTimestamp()
         member.send(dm)
-        message.delete()
 
+        try {
+            await member.kick(reason).then(user.send(dm));
+            await message.channel.send(success)
+        } catch (e) {
+            return message.channel.send(error3)
+        }
+	message.delete()
     }
 
 }
