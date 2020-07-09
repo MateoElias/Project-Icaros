@@ -12,16 +12,14 @@ module.exports = {
             .setTitle("You did not mentioned the user you wanted to ban!")
             .setFooter("Remember to mention the user right before the command! \"A!ban @user\" ")
             .setColor('34cfeb')
-        if (!user) return message.channel.send(nouser)
-        message.delete()
+        if (!user) return message.channel.send(nouser).then(message.delete())
 
 
         var modtoo = new Discord.MessageEmbed()
             .setTitle("I cannot ban that user!")
             .setFooter("I cannot ban this user, most likely because that user is also a mod, check the user's permissions and try again.")
             .setColor('34cfeb')
-        if (user.hasPermission('BAN_MEMBERS')) return message.channel.send(modtoo)
-        message.delete()
+        if (user.hasPermission('BAN_MEMBERS')) return message.channel.send(modtoo).then(message.delete())
 
 
         let reason = args.slice(1).join(" ");
@@ -29,8 +27,7 @@ module.exports = {
             .setTitle("You did not specified a reason!")
             .setFooter("Remember to specify the reason after the user has been mentioned! \"@user [REASON]\"")
             .setColor('34cfeb')
-        if (!reason) return message.channel.send(noreason)
-        message.delete()
+        if (!reason) return message.channel.send(noreason).then(message.delete())
 
 
         var success = new Discord.MessageEmbed()
@@ -55,10 +52,10 @@ module.exports = {
             .setColor('34cfeb')
 
         try {
-            await member.ban(reason);
-            await message.channel.send(success)
+            await member.ban(reason).then(message.delete());
+            await message.channel.send(success).then(message.delete())
         } catch (e) {
-            return message.channel.send(notinserver)
+            return message.channel.send(notinserver).then(message.delete())
         }
 
     }
