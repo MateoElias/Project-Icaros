@@ -4,7 +4,7 @@ module.exports = {
     description: "Bans a designated user out of the current guild.",
     run: async (client, message, args) => {
 
-        if (!message.member.hasPermission('ADMINISTRATOR')) return;
+        if (!message.member.hasPermission('BAN_MEMBERS')) return;
 	    //e
 
         let user = message.mentions.users.first()
@@ -15,7 +15,7 @@ module.exports = {
             .setFooter("I cannot ban this user, most likely because that user is also a mod, check the user's permissions and try again.")
             .setColor('34cfeb')
 
-        if(user.hasPermission('ADMINISTRATOR')) return (message.channel.send(permerror)).then(message.delete())
+        if(user.hasPermission('BAN_MEMBERS')) return (message.channel.send(permerror)).then(message.delete())
 
         var error1 = new Discord.MessageEmbed()
             .setTitle("You did not mentioned the user you wanted to bam!")
