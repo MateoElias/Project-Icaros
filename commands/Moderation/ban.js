@@ -5,6 +5,7 @@ module.exports = {
     run: async (client, message, args) => {
 
         if (!message.member.hasPermission('ADMINISTRATOR') return;
+	    //e
 
         let user = message.mentions.users.first()
         const member = message.guild.member(user);
