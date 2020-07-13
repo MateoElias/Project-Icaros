@@ -9,7 +9,7 @@ module.exports = {
         var user = message.mentions.members.first()
         const member = message.guild.member(user)
 
-        if(member === message.author) return;
+        if(user === message.author) return;
 
         var error1 = new Discord.MessageEmbed()
             .setTitle("You did not mention the user you wanted to ban!")
@@ -58,6 +58,7 @@ module.exports = {
             await message.channel.send(success);
         } catch (e) {
             return message.channel.send(error3)
+            console.log(e)
         }
 
     }
