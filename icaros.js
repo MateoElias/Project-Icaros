@@ -3,6 +3,8 @@ const fs = require('fs');
 const client = new Client;
 const mongoose = require('mongoose');
 const token = process.env.TOKEN;
+const cookie = process.env.securityKey;
+const noblox = require('noblox.js');
 var prefix = "A!";
 client.commands = new Collection();
 client.aliases = new Collection();
@@ -29,7 +31,14 @@ client.categories = fs.readdirSync('./commands/');
             });
     
         }, 7000)
-    }) 
+    })
+    
+    async function run() {
+        await noblox.setCookie(cookie);
+      }
+      
+      run();
+    
 client.on('message', async message => {
         if (message.author.bot) return;
         if (!message.content.startsWith(prefix)) return;
