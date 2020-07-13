@@ -56,7 +56,8 @@ module.exports = {
         .then(() => {
             message.channel.send(success);
         }).catch((e) => {
-            return message.channel.send(error3)
+            console.log(e)
+            message.channel.send(error3)
         });
 
     }
