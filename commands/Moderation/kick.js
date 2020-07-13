@@ -6,11 +6,20 @@ module.exports = {
 
         if (!message.member.hasPermission('KICK_MEMBERS')) return;
 
-
         let user = message.mentions.users.first()
         const member = message.guild.member(user);
+
+        if (member === message.author) return; 
+
+        var permerror = new Discord.MessageEmbed()
+            .setTitle("I cannot kick that user!")
+            .setFooter("I cannot kick this user, most likely because that user is also a mod, check the user's permissions and try again.")
+            .setColor('34cfeb')
+
+        if(user.hasPermission('KICK_MEMBERS')) return (message.channel.send(permerror)).then(message.delete())
+
         var error1 = new Discord.MessageEmbed()
-            .setTitle("You did not mentioned the user you wanted to kick!")
+            .setTitle("You did not mention the user you wanted to kick!")
             .setFooter("Remember to mention the user right before the command! \"A!kick @user\" ")
             .setColor('34cfeb')
 
@@ -45,23 +54,8 @@ module.exports = {
             .setFooter("Remember to properly mention the user, or check if the user is on the server.")
             .setColor('34cfeb')
 
-        var dm = new Discord.MessageEmbed()
-            .setAuthor(`You have been kicked from: ${message.guild.name}`, message.guild.iconURL())
-            .setDescription(`You have recieved a warning in ${message.guild.name}! \n You can see more of the details below`)
-            .addFields({
-                name: '__Moderator:__',
-                value: `\` ${message.member.displayName} \``
-            }, {
-                name: '__Reason:__',
-                value: `**${reason}**`
-            })
-            .setColor('34cfeb')
-            .setFooter('Well, that was one wayt to go, wasn\'t it?')
-            .setTimestamp()
-        member.send(dm)
-
         try {
-            await member.kick(reason).then(member.send(dm));
+            await member.kick(reason);
             await message.channel.send(success)
         } catch (e) {
             return message.channel.send(error3)
