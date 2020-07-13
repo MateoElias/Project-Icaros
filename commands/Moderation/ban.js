@@ -54,7 +54,7 @@ module.exports = {
             .setColor('34cfeb')
         
         try {
-            await user.ban();
+            await user.ban(reason);
             await message.channel.send(success);
         } catch (e) {
             return message.channel.send(error3)
