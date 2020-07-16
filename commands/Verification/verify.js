@@ -1,14 +1,7 @@
 const Discord = require('discord.js');
 const noblox = require('noblox.js');
 const https = require('https');
-const groupId = 5137119;
-const guildId = 726211885288128581;
-module.exports = {
-    name: "verify",
-    description: "Verification Command (Experimental)",
-    run: async (client, message, args) => {
-        // Functions
-        async function mainGroupHandler(guildMember, robloxUsername, robloxId, client) {
+async function mainGroupHandler(guildMember, robloxUsername, robloxId, client) {
             var config = require('../../config.json');
 
             if (guildMember) {
@@ -75,7 +68,10 @@ module.exports = {
                 return;
             }
         }
-
+module.exports = {
+    name: "verify",
+    description: "Verification Command (Experimental)",
+    run: async (client, message, args) => {
         // Run Command
         exports.run = (client, message, args) => {
             const config = client.config;
