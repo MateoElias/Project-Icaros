@@ -1,32 +1,23 @@
-const Warns = require("../../Models/warns");
+const warns = require("../../Models/warns");
 const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "warns",
-  description: "Get a user's warns ",
+  description: "Get a user's warns in the guild!",
+  category: "moderation",
+  usage: "<User mention>",
   run: async (client, message, args) => {
-
-    let meap = message.mentions.members.first();
-
-    var nouser = new MessageEmbed()
-    .setTitle("You did not specified the user!")
-    .setColor('34cfeb')
-    .setFooter("Please mention the user you wish to see the warns of!")
-
-    var nowarns = new MessageEmbed()
-    .setTitle(`${meap} does not possess any warns in this server!`)
-    .setColor('34cfeb')
-    .setFooter("Great! Someone that actually follows the rules!")
-
-    if (!meap) return message.channel.send(nouser);
-    
-    Warns.find(
-      { Guild: message.guild.id, User: meap.id },
+    let user = message.mentions.members.first();
+    if (!user) return message.channel.send(`No user specified!`);
+    warns.find(
+      { Guild: message.guild.id, User: user.id },
       async (err, data) => {
         if (err) console.log(err);
         if (!data.length)
-          return message.channel.send(nowarns);
+          return message.channel.send(
+            `${user.user.tag} has not got any warns in this guild!`
+          );
         let Embed = new MessageEmbed()
-          .setTitle(`${meap}'s warns in ${message.guild.name}.. `)
+          .setTitle(`${user.user.tag}'s warns in ${message.guild.name}.. `)
           .setDescription(
             data.map((d) => {
               return d.Warns.map(
@@ -34,11 +25,9 @@ module.exports = {
                   `${i} - Moderator: ${
                     message.guild.members.cache.get(w.Moderator).user.tag
                   } Reason: ${w.Reason}`
-              ).join("\n")
+              ).join("\n");
             })
-          )
-          .setColor('34cfeb')
-          .setFooter('Well... That was not what I expected from you.')
+          );
         message.channel.send(Embed);
       }
     );
