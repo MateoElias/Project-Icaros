@@ -1,4 +1,4 @@
-const warns = require("../../models/warns");
+const warns = require("../../Models/warns");
 const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "warns",
