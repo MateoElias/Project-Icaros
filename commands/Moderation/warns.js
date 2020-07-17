@@ -1,4 +1,4 @@
-const warns = require("../../Models/warns");
+const Warns = require("../../Models/warns");
 const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "warns",
@@ -19,7 +19,7 @@ module.exports = {
 
     if (!meap) return message.channel.send(nouser);
     
-    warns.find(
+    Warns.find(
       { Guild: message.guild.id, User: meap.id },
       async (err, data) => {
         if (err) console.log(err);
@@ -34,7 +34,7 @@ module.exports = {
                   `${i} - Moderator: ${
                     message.guild.members.cache.get(w.Moderator).user.tag
                   } Reason: ${w.Reason}`
-              ).join("\n");
+              ).join("\n")
             })
           )
           .setColor('34cfeb')
