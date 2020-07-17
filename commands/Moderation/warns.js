@@ -6,18 +6,18 @@ module.exports = {
   category: "moderation",
   usage: "<User mention>",
   run: async (client, message, args) => {
-    let user = message.mentions.members.first();
-    if (!user) return message.channel.send(`No user specified!`);
+    let meap = message.mentions.members.first();
+    if (!meap) return message.channel.send(`No user specified!`);
     warns.find(
-      { Guild: message.guild.id, User: user.id },
+      { Guild: message.guild.id, User: meap.id },
       async (err, data) => {
         if (err) console.log(err);
         if (!data.length)
           return message.channel.send(
-            `${user.user.tag} has not got any warns in this guild!`
+            `${meap.tag} has not got any warns in this guild!`
           );
         let Embed = new MessageEmbed()
-          .setTitle(`${user.user.tag}'s warns in ${message.guild.name}.. `)
+          .setTitle(`${meap.tag}'s warns in ${message.guild.name}.. `)
           .setDescription(
             data.map((d) => {
               return d.Warns.map(
