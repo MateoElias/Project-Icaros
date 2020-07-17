@@ -5,7 +5,7 @@ module.exports = {
   description: "Get a user's warns ",
   run: async (client, message, args) => {
 
-    let user = message.mentions.members.first();
+    let meap = message.mentions.members.first();
 
     var nouser = new MessageEmbed()
     .setTitle("You did not specified the user!")
@@ -13,19 +13,20 @@ module.exports = {
     .setFooter("Please mention the user you wish to see the warns of!")
 
     var nowarns = new MessageEmbed()
-    .setTitle(`${user.user} does not possess any warns in this server!`)
+    .setTitle(`${meap} does not possess any warns in this server!`)
     .setColor('34cfeb')
     .setFooter("Great! Someone that actually follows the rules!")
 
-    if (!user) return message.channel.send(nouser);
+    if (!meap) return message.channel.send(nouser);
+    
     warns.find(
-      { Guild: message.guild.id, User: user.id },
+      { Guild: message.guild.id, User: meap.id },
       async (err, data) => {
         if (err) console.log(err);
         if (!data.length)
           return message.channel.send(nowarns);
         let Embed = new MessageEmbed()
-          .setTitle(`${user.user.tag}'s warns in ${message.guild.name}.. `)
+          .setTitle(`${meap}'s warns in ${message.guild.name}.. `)
           .setDescription(
             data.map((d) => {
               return d.Warns.map(
