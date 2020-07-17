@@ -1,5 +1,5 @@
 const warns = require("../../models/warns");
-const { MessageEmbed } = require("discord.js");
+const Discord = require("discord.js");
 module.exports = {
   name: "warns",
   description: "Get a user's warns ",
@@ -7,12 +7,12 @@ module.exports = {
 
     let user = message.mentions.members.first();
 
-    var nouser = new MessageEmbed()
+    var nouser = new Discord.MessageEmbed()
     .setTitle("You did not specified the user!")
     .setColor('34cfeb')
     .setFooter("Please mention the user you wish to see the warns of!")
 
-    var nowarns = new MessageEmbed()
+    var nowarns = new Discord.MessageEmbed()
     .setTitle(`${user.user} does not possess any warns in this server!`)
     .setColor('34cfeb')
     .setFooter("Great! Someone that actually follows the rules!")
@@ -24,7 +24,7 @@ module.exports = {
         if (err) console.log(err);
         if (!data.length)
           return message.channel.send(nowarns);
-        let Embed = new MessageEmbed()
+        let Embed = new Discord.MessageEmbed()
           .setTitle(`${user.user.tag}'s warns in ${message.guild.name}.. `)
           .setDescription(
             data.map((d) => {
