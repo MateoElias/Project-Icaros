@@ -8,7 +8,7 @@ module.exports = {
             const discordId = message.author.id;
             const url = `https://verify.eryn.io/api/user/${discordId}`;
             async function mainGroupHandler(guildMember, robloxUsername, robloxId, client) {
-            var config = require('./config.json');
+            var config = require('../../../config');
 
             if (guildMember) {
                 // Main roblox group
