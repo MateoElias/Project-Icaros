@@ -26,7 +26,7 @@ module.exports = {
         var error2 = new Discord.MessageEmbed()
             .setTitle("You did not specified a reason!")
             .setFooter("Remember to specify the reason after the user has been mentioned! \"@user [REASON]\"")
-            .setColor('c70808'c70808);
+            .setColor('c70808');
         
         if (!reason) return (message.channel.send(error2)).then(message.delete())
 
