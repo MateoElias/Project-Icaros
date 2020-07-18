@@ -69,11 +69,11 @@ module.exports = {
                     return;
                 } else {
                     return;
-                } catch(err)
+                }
             } else {
                 return;
             }
-        }
+        } console.log(err)
 
             var data = ``;
             var botMessage = new Discord.MessageEmbed()
