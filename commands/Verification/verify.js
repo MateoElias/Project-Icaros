@@ -6,9 +6,9 @@ module.exports = {
     description: "Verification Command (Experimental)",
     run: async (client, message, args) => {
                 
-            /* const discordId = message.author.id;
+            const discordId = message.author.id;
             const url = `https://verify.eryn.io/api/user/${discordId}`;
-            async function mainGroupHandler(guildMember, robloxUsername, robloxId, client) {
+            /* async function mainGroupHandler(guildMember, robloxUsername, robloxId, client) {
             var config = require('../../../config');
 
             if (guildMember) {
