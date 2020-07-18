@@ -1,7 +1,12 @@
 const Discord = require('discord.js');
 const noblox = require('noblox.js');
 const https = require('https');
-const discordId = message.author.id;
+module.exports = {
+    name: "verify",
+    description: "Verification Command (Experimental)",
+    run: async (client, message, args) => {
+                
+            /* const discordId = message.author.id;
             const url = `https://verify.eryn.io/api/user/${discordId}`;
             async function mainGroupHandler(guildMember, robloxUsername, robloxId, client) {
             var config = require('../../../config');
@@ -70,11 +75,7 @@ const discordId = message.author.id;
                 return;
             }
         }
-
-module.exports = {
-    name: "verify",
-    description: "Verification Command (Experimental)",
-    run: async (client, message, args) => {
+*/
            
             var data = ``;
             var botMessage = new Discord.MessageEmbed()
