@@ -72,8 +72,6 @@ module.exports = {
     name: "verify",
     description: "Verification Command (Experimental)",
     run: async (client, message, args) => {
-        // Run Command
-        exports.run = (client, message, args) => {
             const config = client.config;
             const discordId = message.author.id;
             const url = `https://verify.eryn.io/api/user/${discordId}`;
@@ -148,4 +146,3 @@ module.exports = {
             });
         }
     }
-}
