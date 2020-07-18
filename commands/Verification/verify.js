@@ -73,7 +73,7 @@ module.exports = {
             } else {
                 return;
             }
-        } console.log(err)
+        }
 
             var data = ``;
             var botMessage = new Discord.MessageEmbed()
