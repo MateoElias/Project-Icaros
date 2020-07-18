@@ -94,7 +94,7 @@ module.exports = {
                         var robloxId = data.robloxId;
                         var robloxUsername = data.robloxUsername;
 
-                        var mainGuild = client.guilds.cache.find(g => g.id == config.discordServers.mainServerId);
+                        var mainGuild = client.guilds.cache.find(g => g.id == 660523785845473280);
 
                         // Gather guild members
                         var mainGuildMember = mainGuild.member(message.author);
