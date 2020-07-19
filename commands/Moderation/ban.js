@@ -14,19 +14,19 @@ module.exports = {
         var error1 = new Discord.MessageEmbed()
             .setTitle("You did not mention the user you wanted to ban!")
             .setFooter("Remember to mention the user right before the command! \"A!ban @user\" ")
-            .setColor('34cfeb');
+            .setColor('c70808');
         if (!member) return (message.channel.send(error1)).then(message.delete())
 
         var admintoo = new Discord.MessageEmbed()
             .setTitle("This user is a moderator too!")
             .setFooter("The user's permissions prevent me from banning the specified user.")
-            .setColor('34cfeb')
+            .setColor('c70808')
          if (member.hasPermission('BAN_MEMBERS')) return message.channel.send(admintoo)
 
         var error2 = new Discord.MessageEmbed()
             .setTitle("You did not specified a reason!")
             .setFooter("Remember to specify the reason after the user has been mentioned! \"@user [REASON]\"")
-            .setColor('34cfeb');
+            .setColor('c70808');
         
         if (!reason) return (message.channel.send(error2)).then(message.delete())
 
@@ -43,13 +43,13 @@ module.exports = {
                 inline: true
             })
             .setFooter("Welp! Try not to be like that guy!")
-            .setColor('34cfeb');
+            .setColor('4cb913');
 
         var error3 = new Discord.MessageEmbed()
             .setTitle("Error")
             .setDescription("I was unable to find that user, maybe it's not on the server anymore.")
             .setFooter("Remember to properly mention the user, or check if the user is on the server.")
-            .setColor('34cfeb');
+            .setColor('c70808');
 
 
         member.ban({ reason: reason })
