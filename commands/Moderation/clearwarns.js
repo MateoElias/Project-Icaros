@@ -6,6 +6,9 @@ module.exports = {
   category: "moderation",
   usage: "<User mention> <Reason>",
   run: async (client, message, args) => {
+    
+    if (!message.member.hasPermission('KICK_MEMBERS')) return;
+    
     let user = message.mentions.users.first();
     if (!user){
         return message.channel.send(`⚠️ **Please state the user you want to clear warns of!** ⚠️`);
