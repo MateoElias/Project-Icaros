@@ -52,4 +52,13 @@ client.on('message', async message => {
         if (command) command.run(client, message, args)
     })
 
+    client.on('guildMemberAdd', member => {
+        const channel = member.guild.channels.cache.find(ch => ch.name === 'join_logs');
+        if (!channel) return;
+        let greeting = new Discord.MessageEmbed()
+        .setTitle("User Joined")
+        .setDescription(`${member.tag} Joined.`)
+        channel.send(greeting);
+      });
+
 client.login(token)
