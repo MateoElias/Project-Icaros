@@ -5,6 +5,9 @@ module.exports={
     description: "Warns a user",
     category: "moderation",
     run: (client, message, args) => {
+	    
+	if (!message.member.hasPermission('KICK_MEMBERS')) return;
+	    
         let user = message.mentions.users.first()
 	    if(user === message.author) return;
         if(!user) return message.channel.send('⚠️ **Please mention the user you wish to warn** ⚠️')
