@@ -5,6 +5,8 @@ module.exports = {
     run: async (client, message, args) => {
 
         var user = message.mentions.members.first()
+        var member = message.guild.member(user)
+
 
         var reason = args.slice(1).join(" ");
 
