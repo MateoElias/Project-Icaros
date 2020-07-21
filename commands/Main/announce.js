@@ -5,6 +5,8 @@ module.exports = {
     name: "announce",
     description: "Announcement Command",
     run: async (client, message, args) => {
+	    
+	 if (!message.member.hasPermission('MANAGE_ROLES')) return;
 
         // Channel Definition
         let chnl = message.mentions.channels.first()
