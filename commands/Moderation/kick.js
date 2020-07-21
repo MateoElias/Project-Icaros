@@ -52,7 +52,7 @@ module.exports = {
             .setColor('c70808');
 
 
-        member.kick({ reason: reason })
+        member.kick({ reason: `[${message.author.tag}] ${reason}` })
         .then(() => {
             message.channel.send(success);
         }).catch((e) => {
