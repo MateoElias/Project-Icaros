@@ -4,10 +4,10 @@ module.exports = {
     description: "Kicks a designated user out of the current guild.",
     run: async (client, message, args) => {
 
-        if (!message.member.hasPermission('KICK_MEMBERS')) return;
-
         let user = message.mentions.users.first()
         const member = message.guild.member(user);
+	    
+	if (!message.member.hasPermission('KICK_MEMBERS')) return;
 
         if (member === message.author) return; 
 
