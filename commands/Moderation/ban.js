@@ -5,7 +5,6 @@ module.exports = {
     run: async (client, message, args) => {
 
         var user = message.mentions.members.first()
-        var member = message.guild.member(user)
 
         var reason = args.slice(1).join(" ");
 
@@ -32,7 +31,7 @@ module.exports = {
 
         var success = new Discord.MessageEmbed()
             .setTitle("Success!")
-            .setDescription(`**${member.tag}** has been banned successfully. \n You can see more of the details below:`)
+            .setDescription(`**${user.tag}** has been banned successfully. \n You can see more of the details below:`)
             .addFields({
                 name: "__Moderator:__",
                 value: `\`${message.member.displayName}\``,
