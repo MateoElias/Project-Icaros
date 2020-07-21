@@ -32,7 +32,7 @@ module.exports = {
 
         var success = new Discord.MessageEmbed()
             .setTitle("Success!")
-            .setDescription(`**${member.tag}** has been kicked successfully. \n You can see more of the details below:`)
+            .setDescription(`You can see more of the details below: \n**${user.tag}** has been banned successfully.`)
             .addFields({
                 name: "__Moderator:__",
                 value: `\`${message.member.displayName}\``,
