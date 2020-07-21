@@ -1,6 +1,7 @@
 const {Collection,Client,Discord} = require('discord.js');
 const fs = require('fs');
 const client = new Client;
+const config = require('./config.json')
 const mongoose = require('mongoose');
 const token = process.env.TOKEN;
 const cookie = process.env.securityKey;
@@ -8,6 +9,7 @@ const noblox = require('noblox.js');
 var prefix = "A!";
 client.commands = new Collection();
 client.aliases = new Collection();
+client.config = config;
 mongoose.connect(process.env.mongodb, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
@@ -51,14 +53,5 @@ client.on('message', async message => {
         if (!command) command = client.commands.get(client.aliases.get(cmd));
         if (command) command.run(client, message, args)
     })
-
-    client.on('guildMemberAdd', member => {
-        const channel = member.guild.channels.cache.find(ch => ch.name === 'join_logs');
-        if (!channel) return;
-        let greeting = new Discord.MessageEmbed()
-        .setTitle("User Joined")
-        .setDescription(`${member.tag} Joined.`)
-        channel.send(greeting);
-      });
 
 client.login(token)
