@@ -12,14 +12,14 @@ module.exports = {
         if (!message.member.hasPermission('KICK_MEMBERS')) return;
 
         var error1 = new Discord.MessageEmbed()
-            .setTitle("You did not mention the user you wanted to ban!")
+            .setTitle("You did not mention the user you wanted to kick!")
             .setFooter("Remember to mention the user right before the command! \"A!ban @user\" ")
             .setColor('c70808');
         if (!member) return (message.channel.send(error1)).then(message.delete())
 
         var admintoo = new Discord.MessageEmbed()
             .setTitle("This user is a moderator too!")
-            .setFooter("The user's permissions prevent me from banning the specified user.")
+            .setFooter("The user's permissions prevent me from kicking the specified user.")
             .setColor('c70808')
          if (member.hasPermission('KICK_MEMBERS')) return message.channel.send(admintoo)
 
