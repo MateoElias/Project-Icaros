@@ -5,8 +5,6 @@ module.exports = {
     name: "announce",
     description: "Announcement Command",
     run: async (client, message, args) => {
-	    
-	 if (!message.member.hasPermission('MANAGE_ROLES')) return;
 
         // Channel Definition
         let chnl = message.mentions.channels.first()
@@ -15,7 +13,17 @@ module.exports = {
         .setFooter('Pleas specify the channel right after the command. "A!announce #channel"')
         .setColor('34cfeb')
         if (!chnl) return message.channel.send(nochnl).then(message.delete())
-        
+
+        // Channel Responses
+        const sending1 = new MessageEmbed()
+        .setTitle("Sending . . .")
+        .setColor('ffbb17')
+
+        const sent = new MessageEmbed()
+        .setTitle("Success!")
+        .setDescription(`Your announcement has been published successfully in ${chnl}`)
+        .setColor('4cb913')
+
         //Message Definition
         let MSG = message.content.split(" ").slice(2).join(" ")
         var short = new MessageEmbed()
@@ -33,6 +41,8 @@ module.exports = {
             .setTimestamp()
             .setFooter("Alexandra.AIC | Developed by: O5-6", 'https://cdn.discordapp.com/attachments/667913030629195786/728325820715892736/Alexandra.png')
 
+            const sending = await message.channel.send(sending1)
+            sending.edit(sent)
             chnl.send("@here").then(m => m.delete());
             chnl.send(embed)
             message.delete()
