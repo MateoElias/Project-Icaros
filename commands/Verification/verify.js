@@ -6,7 +6,7 @@ async function mainGroupHandler(guildMember, robloxUsername, robloxId, client) {
 
             if (guildMember) {
                 // Main roblox group
-                try {
+                //try {
                     guildMember = await guildMember.edit({
                         nick: robloxUsername
                     });
@@ -44,7 +44,7 @@ async function mainGroupHandler(guildMember, robloxUsername, robloxId, client) {
                     } else {
                         return;
                     }
-                } catch (err) {}
+                //} catch (err) {}
             } else {
                 return;
             }
