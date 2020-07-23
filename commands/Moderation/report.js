@@ -15,7 +15,7 @@ module.exports = {
             .setTitle("You did not mentioned a user!")
             .setFooter("You must mention the user to report, in order to be processed.")
             .setColor("c70808")
-        if (!user) return
+        if (!User) return
 
         let Avatar = User.displayAvatarURL();
         let Channel = message.guild.channels.cache.find(
