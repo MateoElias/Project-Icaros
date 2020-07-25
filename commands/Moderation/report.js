@@ -9,7 +9,7 @@ module.exports = {
     description: "Reports a user, due to either ROBLOX or Discord rule violation",
     run: async (client, message, args) => {
 
-        let User = message.mentions.users.first() || args[0].join(" ")
+        let User = message.mentions.users.first() || args[0]
 
         var nouser = new MessageEmbed()
             .setTitle("You did not mentioned a user!")
@@ -54,6 +54,7 @@ module.exports = {
                 value: `${new Intl.DateTimeFormat("en-US").format(Date.now())}`,
                 inline: true,
             });
-        Channel.send(Embed);
+        Channel.send(Embed)
+        message.delete()
     }
 }
