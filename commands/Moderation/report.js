@@ -9,7 +9,7 @@ module.exports = {
     description: "Reports a user, due to either ROBLOX or Discord rule violation",
     run: async (client, message, args) => {
 
-        let User = message.mentions.users.first() || args[0]
+        let User = message.mentions.members.first() || args[0]
 
         var nouser = new MessageEmbed()
             .setTitle("You did not mentioned a user!")
@@ -17,7 +17,7 @@ module.exports = {
             .setColor("c70808")
         if (!User) return message.channel.send(nouser).then(message.delete())
 
-        let Avatar = User.displayAvatarURL();
+        let Avatar = User.displayAvatarURL() || null
         let Channel = message.guild.channels.cache.find(
             (ch) => ch.name === "reports"
         );
@@ -29,7 +29,7 @@ module.exports = {
         let Embed = new MessageEmbed()
             .setTitle(`New report!`)
             .setDescription(
-                `The moderator \`${message.author.tag}\` has reported the user \`${User.tag}\`! `
+                `The moderator \`${message.author.tag}\` has reported the user \`${User}\`! `
             )
             .setColor('4cb913')
             .setThumbnail(Avatar)
