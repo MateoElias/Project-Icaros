@@ -52,6 +52,32 @@ module.exports = {
                 inline: true,
             });
         Channel.send(Embed)
+        
+        let Embed2 = new MessageEmbed()
+            .setTitle(`New report!`)
+            .setDescription(
+                `The moderator \`${message.author.tag}\` has reported the user \`${User}\`! `
+            )
+            .setColor('4cb913')
+            .addFields({
+                name: "Moderator",
+                value: `${message.member.displayName}`,
+                inline: true
+            }, {
+                name: "Reported",
+                value: `${User}`,
+                inline: true
+            }, {
+                name: "Reason",
+                value: `\`${Reason}\``,
+                inline: true
+            }, {
+                name: "Date (M/D/Y)",
+                value: `${new Intl.DateTimeFormat("en-US").format(Date.now())}`,
+                inline: true,
+            });
+        if(User == args[0]) return Channel.send(Embed2).then(message.delete())
+        
         message.delete()
     }
 }
