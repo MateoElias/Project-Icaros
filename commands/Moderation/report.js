@@ -1,15 +1,12 @@
 const {
     MessageEmbed
 } = require('discord.js');
-const {
-    message
-} = require('noblox.js');
 module.exports = {
     name: "report",
     description: "Reports a user, due to either ROBLOX or Discord rule violation",
     run: async (client, message, args) => {
 
-        let User = message.mentions.members.first() || args[0]
+        let User = message.mentions.users.first() || args[0]
 
         var nouser = new MessageEmbed()
             .setTitle("You did not mentioned a user!")
@@ -17,7 +14,7 @@ module.exports = {
             .setColor("c70808")
         if (!User) return message.channel.send(nouser).then(message.delete())
 
-        let Avatar = User.displayAvatarURL() || null
+        let Avatar = User.displayAvatarURL()
         let Channel = message.guild.channels.cache.find(
             (ch) => ch.name === "reports"
         );
