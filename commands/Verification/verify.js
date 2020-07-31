@@ -78,7 +78,6 @@ module.exports = {
 
             var data = ``;
             var botMessage = new Discord.MessageEmbed()
-                .setColor("#16699f")
 
             https.get(url, (resp) => {
                 resp.on(`data`, (chunk) => {
@@ -90,7 +89,7 @@ module.exports = {
                     if (data.status == "ok") {
                         botMessage.setTitle(`Verification Successful!`);
                         botMessage.setDescription(`You are currently verified as **${data.robloxUsername}**. If you wish to reverify your account, click [here](https://verify.eryn.io/) and follow the instructions.`);
-
+                        botMessage.setColor('4cb913')
                         var robloxId = data.robloxId;
                         var robloxUsername = data.robloxUsername;
 
@@ -113,8 +112,8 @@ module.exports = {
                     } else {
                         if (data.errorCode == "429") {
                             botMessage.setTitle(`Error Code 429`);
-                            botMessage.setDescription(`There was an error verifying your account. **Please try again after ${data.retryAfterSeconds} seconds**. If this error persists, please contact @master10104#3395 with the error code.`);
-
+                            botMessage.setDescription(`There was an error verifying your account (Too many requests). **Please try again after ${data.retryAfterSeconds} seconds**. If this error persists, please contact @master10104#3395 with the error code.`);
+                            botMessage.setColor('c70808');
                             if (message.channel)
                                 message.channel.send(botMessage);
                             else
@@ -124,14 +123,16 @@ module.exports = {
                             if (data.errorCode == "404") {
                                 botMessage.setTitle(`Verification Failed!`);
                                 botMessage.setDescription(`Your discord account isn't linked to a Roblox account. To verify your account, click [here](https://verify.eryn.io/) and follow the instructions.`);
-                                if (message.channel)
+                                botMessage.setColor('c70808');
+                                        if (message.channel)
                                     message.channel.send(botMessage);
                                 else
                                     message.reply(botMessage);
                                 console.log(`Account not verified`);
                             } else {
                                 botMessage.setTitle(`Error Code ${data.errorCode}`);
-                                botMessage.setDescription(`There was an error verifying your account. Please try again later. If this problem persists, please contact @master10104#3395 with the error code.`);
+                                botMessage.setDescription(`There was an error verifying your account. Please try again later.`);
+                                botMessage.setColor('c70808');
                                 if (message.channel)
                                     message.channel.send(botMessage);
                                 else
