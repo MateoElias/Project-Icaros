@@ -46,7 +46,7 @@ module.exports = {
         .setFooter("A!announce #channel `here/everyone/null`")
         .setColor('34cfeb')
         
-        function Sending(){
+       async function Sending(){
             const sending = await message.channel.send(sending1)
             sending.edit(sent)
         }
