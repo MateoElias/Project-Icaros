@@ -45,22 +45,24 @@ module.exports = {
         .setTitle("You did not specify the ping to utilize!")
         .setFooter("A!announce #channel `here/everyone/null`")
         .setColor('34cfeb')
-
-        if (args[1] === 'here') {
+        
+        function Sending(){
             const sending = await message.channel.send(sending1)
             sending.edit(sent)
+        }
+
+        if (args[1] === 'here') {
+            Sending();
             chnl.send("@here").then(m => m.delete());
             chnl.send(embed)
             message.delete()
         } else if (args[1] === 'everyone') {
-            const sending2 = await message.channel.send(sending2)
-            sending2.edit(sent)
+            Sending();
             chnl.send("@everyone").then(m => m.delete());
             chnl.send(embed)
             message.delete()
         } else if (args[1] === 'null') {
-            const sending3 = await message.channel.send(sending3)
-            sending3.edit(sent)
+            Sending()
             chnl.send(embed)
             message.delete()
         } else {
