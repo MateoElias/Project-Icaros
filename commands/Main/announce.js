@@ -25,7 +25,7 @@ module.exports = {
         .setColor('4cb913')
 
         //Message Definition
-        let MSG = message.content.split(" ").slice(2).join(" ")
+        let MSG = message.content.split(" ").slice(3).join(" ")
         var short = new MessageEmbed()
         .setTitle('Your announcement is too short to be announced.')
         .setFooter('Make sure your your announcement is longer than 10 characters!')
