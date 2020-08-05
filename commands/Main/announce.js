@@ -69,8 +69,5 @@ module.exports = {
             message.channel.send(noping)
             message.delete()
         }
-
-
-        console.log(args[1])
     }
 }
