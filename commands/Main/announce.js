@@ -69,6 +69,6 @@ module.exports = {
         }
 
 
-        console.log(args[0])
+        console.log(args[3])
     }
 }
