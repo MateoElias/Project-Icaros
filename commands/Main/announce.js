@@ -8,28 +8,28 @@ module.exports = {
 
         // Channel Definition
         let chnl = message.mentions.channels.first()
-	var nochnl = new MessageEmbed()
-        .setTitle('You did not specified the channel you want the announcement in.')
-        .setFooter('Pleas specify the channel right after the command. "A!announce #channel"')
-        .setColor('34cfeb')
+        var nochnl = new MessageEmbed()
+            .setTitle('You did not specified the channel you want the announcement in.')
+            .setFooter('Pleas specify the channel right after the command. "A!announce #channel"')
+            .setColor('34cfeb')
         if (!chnl) return message.channel.send(nochnl).then(message.delete())
 
         // Channel Responses
         const sending1 = new MessageEmbed()
-        .setTitle("Sending . . .")
-        .setColor('ffbb17')
+            .setTitle("Sending . . .")
+            .setColor('ffbb17')
 
         const sent = new MessageEmbed()
-        .setTitle("Success!")
-        .setDescription(`Your announcement has been published successfully in ${chnl}`)
-        .setColor('4cb913')
+            .setTitle("Success!")
+            .setDescription(`Your announcement has been published successfully in ${chnl}`)
+            .setColor('4cb913')
 
         //Message Definition
         let MSG = message.content.split(" ").slice(3).join(" ")
         var short = new MessageEmbed()
-        .setTitle('Your announcement is too short to be announced.')
-        .setFooter('Make sure your your announcement is longer than 10 characters!')
-        .setColor('34cfeb')
+            .setTitle('Your announcement is too short to be announced.')
+            .setFooter('Make sure your your announcement is longer than 10 characters!')
+            .setColor('34cfeb')
         if (MSG.length < 10) return message.channel.send(short).then(message.delete())
         if (!MSG) return message.channel.send("You did not specified anything to announce.").then(message.delete())
 
@@ -41,11 +41,34 @@ module.exports = {
             .setTimestamp()
             .setFooter("Alexandra.AIC | Developed by: O5-6", 'https://cdn.discordapp.com/attachments/667913030629195786/728325820715892736/Alexandra.png')
 
+        const noping = new MessageEmbed()
+        .setTitle("You did not specified the ping to utilize!")
+        .setFooter("A!announce #channel `here/everyone/null`")
+        .setColor('34cfeb')
+
+        if (args[3] === 'here') {
             const sending = await message.channel.send(sending1)
             sending.edit(sent)
             chnl.send("@here").then(m => m.delete());
             chnl.send(embed)
             message.delete()
-            console.log(args[0])
+        } else if (args[3] === 'everyone') {
+            const sending2 = await message.channel.send(sending1)
+            sending2.edit(sent)
+            chnl.send("@everyone").then(m => m.delete());
+            chnl.send(embed)
+            message.delete()
+        } else if (args[3] === 'null') {
+            const sending3 = await message.channel.send(sending1)
+            sending3.edit(sent)
+            chnl.send(embed)
+            message.delete()
+        } else {
+            message.channel.send(noping)
+            message.delete()
+        }
+
+
+        console.log(args[0])
     }
 }
