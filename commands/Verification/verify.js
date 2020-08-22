@@ -26,6 +26,7 @@ async function mainGroupHandler(guildMember, robloxUsername, robloxId, client) {
                         var isInEC = await noblox.getRankInGroup(config.robloxGroups.EC, robloxId) != 0;
                         var isInDEA = await noblox.getRankInGroup(config.robloxGroups.DEA, robloxId) != 0;
                         var isInMaD = await noblox.getRankInGroup(config.robloxGroups.MaD, robloxId) != 0;
+                        var isInRAISA = await noblox.getRankInGroup(config.robloxGroups.RAISA, robloxId) != 0;
 
                         if (isInAD)
                             guildMember.roles.add(guild.roles.cache.find(r => r.name == "AD"));
@@ -41,6 +42,8 @@ async function mainGroupHandler(guildMember, robloxUsername, robloxId, client) {
                             guildMember.roles.add(guild.roles.cache.find(r => r.name == "DEA"));
                         if (isInMaD)
                             guildMember.roles.add(guild.roles.cache.find(r => r.name == "MaD"));
+                        if (isInRAISA)
+                            guildMember.roles.add(guild.roles.cache.find(r => r.name == "RAISA"));
                     } else {
                         return;
                     }
