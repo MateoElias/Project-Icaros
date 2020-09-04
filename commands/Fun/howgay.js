@@ -5,15 +5,10 @@ module.exports = {
   run: async(client, message, args) => {
     
     var name = message.mentions.users.first()
-    
-      var percent = Math.floor(Math.random() * 100);
-      var resp = new MessageEmbed()
-        .setTitle("Homosexuality Rate")
-        .setColor('RANDOM')
-        .setDescription(`🏳️‍🌈 ${name} is ${percent}% gay 🏳️‍🌈`)
+    var percent = Math.floor(Math.random() * 100);    
     
     if(!name) {
-    resp = new MessageEmbed()
+    var resp = new MessageEmbed()
         .setTitle("Homosexuality Rate")
         .setColor('RANDOM')
         .setDescription(`🏳️‍🌈 You are ${percent}% gay 🏳️‍🌈`)
