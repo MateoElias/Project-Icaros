@@ -10,15 +10,19 @@ module.exports = {
       var resp = new MessageEmbed()
         .setTitle("Homosexuality Rate")
         .setColor('RANDOM')
-        .setDescription(`🏳️‍🌈 ${name.username} is ${percent}% gay 🏳️‍🌈`);
+        .setDescription(`🏳️‍🌈 ${name} is ${percent}% gay 🏳️‍🌈`)
     
     if(!name) {
     resp = new MessageEmbed()
         .setTitle("Homosexuality Rate")
         .setColor('RANDOM')
-        .setDescription(`🏳️‍🌈 You are ${percent}% gay 🏳️‍🌈`);
+        .setDescription(`🏳️‍🌈 You are ${percent}% gay 🏳️‍🌈`)
      message.channel.send(resp)
     } else { 
+      resp = new MessageEmbed()
+        .setTitle("Homosexuality Rate")
+        .setColor('RANDOM')
+        .setDescription(`🏳️‍🌈 ${name.username} ${percent}% gay 🏳️‍🌈`)
       message.channel.send(resp)
     }
   }
