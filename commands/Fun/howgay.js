@@ -4,7 +4,18 @@ module.exports = {
   descriptions: "Shows how gay you are lmao",
   run: async(client, message, args) => {
 
-      name = const name = message.mentions.users.first(); || message.member.displayName();
+    async function arrayToString(arr) {
+      var str = " ";
+      for (let i = 0; i < arr.length - 1; i++)
+        str += arr[i] + " ";
+      str += arr[arr.length-1];
+      return str;
+    }
+
+      var name = message.mentions.users.first || message.member.displayName()
+
+if (args[0] && !message.mentions.users.first)
+  name = arrayToString(args);
     
       var percent = Math.floor(Math.random() * 100);
     
