@@ -17,7 +17,7 @@ module.exports = {
       resp = new MessageEmbed()
         .setTitle("Homosexuality Rate")
         .setColor('RANDOM')
-        .setDescription(`🏳️‍🌈 ${name.username} ${percent}% gay 🏳️‍🌈`)
+        .setDescription(`🏳️‍🌈 ${name.username} is ${percent}% gay 🏳️‍🌈`)
       message.channel.send(resp)
     }
   }
