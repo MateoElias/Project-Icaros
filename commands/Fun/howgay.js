@@ -10,13 +10,13 @@ module.exports = {
       var resp = new MessageEmbed()
         .setTitle("Homosexuality Rate")
         .setColor('RANDOM')
-        .setDescription(`🏳️‍🌈 ${name} is ${percent}% gay 🏳️‍🌈`);
+        .setDescription(`🏳️‍🌈 ${name.username} is ${percent}% gay 🏳️‍🌈`);
     
     if(!name) {
     resp = new MessageEmbed()
         .setTitle("Homosexuality Rate")
         .setColor('RANDOM')
-        .setDescription(`🏳️‍🌈 ${message.author.username} is ${percent}% gay 🏳️‍🌈`);
+        .setDescription(`🏳️‍🌈 You are ${percent}% gay 🏳️‍🌈`);
      message.channel.send(resp)
     } else { 
       message.channel.send(resp)
