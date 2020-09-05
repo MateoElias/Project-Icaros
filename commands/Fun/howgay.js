@@ -3,9 +3,9 @@ module.exports = {
   name: "howgay",
   descriptions: "Shows how gay you are lmao",
   run: async(client, message, args) => {
-
-    var percent = Math.floor(Math.random() * 100); 
-    var name =  message.metions.users.first();
+    
+    var name =  message.metions.users.first()
+    var percent = Math.floor(Math.random() * 100)
     
     if(!name) {
     var resp = new MessageEmbed()
