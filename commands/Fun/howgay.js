@@ -3,8 +3,7 @@ module.exports = {
   name: "howgay",
   descriptions: "Shows how gay you are lmao",
   run: async(client, message, args) => {
-    
-    var name = message.member.displayName()
+
     var percent = Math.floor(Math.random() * 100);    
     
     if(!name) {
@@ -17,7 +16,7 @@ module.exports = {
       resp = new MessageEmbed()
         .setTitle("Homosexuality Rate")
         .setColor('RANDOM')
-        .setDescription(`🏳️‍🌈 ${name} is ${percent}% gay 🏳️‍🌈`)
+        .setDescription(`🏳️‍🌈 ${message.member.displayName} is ${percent}% gay 🏳️‍🌈`)
       message.channel.send(resp)
     }
   }
