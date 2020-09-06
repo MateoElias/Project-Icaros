@@ -10,7 +10,7 @@ module.exports = {
             .setDescription(`Hello ${message.member.displayName}! I'm here to assist you with my usage! \n I will make a list of commands for you below:`)
             .addFields({
                     name: '__Ping:__',
-                    value: 'Returns "Pong" plus your ping and API ping. \n `A!ping`',
+                    value: 'Returns API ping. \n `A!ping`',
                     inline: true
                 }, {
                     name: '__Announce:__',
