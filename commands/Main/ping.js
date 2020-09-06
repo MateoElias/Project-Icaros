@@ -3,7 +3,7 @@ module.exports = {
     name: 'ping',
     description: 'shows ping!',
     run: async (client, message, args) => {
-    const pinging = new Discord.MessageEmbed()
+    const pinging1 = new Discord.MessageEmbed()
         .setTitle("Pinging . . .")
         .setColor('ffbb17')
     
