@@ -9,11 +9,10 @@ message.channel.send(`Pinging....`).then((msg) => {
         .setDescription(
           `Pong!\nLatency is ${Math.floor(
             msg.createdTimestamp - message.createdTimestamp
-          )}ms\nAPI Latency is ${Math.round(bot.ws.ping)}ms`
+          )}ms\nAPI Latency is ${Math.round(client.ws.ping)}ms`
         )
-        .setColor("RANDOM");
+        .setColor("34cfeb");
       msg.edit(_);
-      msg.edit("\u200B");
     });
   },
 };
