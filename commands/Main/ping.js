@@ -16,6 +16,5 @@ module.exports = {
         )    
       const pinging = await message.channel.send(pinging)
         pinging.edit(pinged)
-    });
-  },
-};
+    }
+  }
