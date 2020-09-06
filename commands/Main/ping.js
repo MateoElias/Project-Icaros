@@ -12,7 +12,6 @@ module.exports = {
         .setTitle("Pong!")
         .setColor("4cb913")
         .addFields(
-            {name: "__**Latency:**__", value: `${Math.floor(message.createdTimestamp - message.createdTimestamp)}ms`},
             {name: "__**API Latency:**__", value: `${Math.round(client.ws.ping)}ms`}
         )    
       const pinging = await message.channel.send(pinging1)
