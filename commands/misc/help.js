@@ -14,7 +14,7 @@ module.exports = {
                     inline: true
                 }, {
                     name: '__Announce:__',
-                    value: 'Announces a whatever message needed in the desired channel. \n `A!announce #channel here/everyone/null [MESSAGE]',
+                    value: 'Announces a whatever message needed in the desired channel. \n `A!announce #channel here/everyone/null [MESSAGE]`',
                     inline: true
                 }, {
                     name: '__Warn:__',
