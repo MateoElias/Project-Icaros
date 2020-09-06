@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 module.exports = {
     name: 'ping',
     description: 'shows ping!',
+    timeout: 10000,
     run: async (client, message, args) => {
     const pinging1 = new Discord.MessageEmbed()
         .setTitle("Pinging . . .")
