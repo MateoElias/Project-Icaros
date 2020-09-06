@@ -47,10 +47,16 @@ module.exports = {
             .setTitle("Error")
             .setDescription("I was unable to send you the command list, this may be caused do to you having your Direct Messages closed, disabled Direct messages from server members or you have blocked me (rude \>:( ).")
             .setColor('c70808')
+            
+            const success = new MessageEmbed()
+            .setTitle("Check your DMs!")
+            .setColor("34cfeb")
         try{
             await message.author.send(help);
+            await message.channel.send(success)
         } catch(e) {
             await message.channel.send(dmclosed)
         }
+        message.delete()
     }
 }
