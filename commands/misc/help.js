@@ -45,7 +45,7 @@ module.exports = {
 
             const dmclosed = new MessageEmbed()
             .setTitle("Error")
-            .setDescription("I was unable to send you the command list, this may be caused do to you having your Direct Messages closed, disabled Direct messages from server members or you have blocked me (rude \>:( ).")
+            .setDescription("I was unable to send you the command list, this may be caused do to you having your Direct Messages closed, disabled Direct messages from server members or you have blocked me (rude <:sad_alex:752547310793130115> ).")
             .setColor('c70808')
             
             const success = new MessageEmbed()
