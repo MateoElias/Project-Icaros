@@ -11,7 +11,15 @@ const responses = [
   "bro absolutely",
   "as long as you don't tell Dr. Bright",
   "Sure thing chief",
-  "[REDACTED]"
+  "[REDACTED]",
+  "Without a doubt",
+  "sign points to yes",
+  "absolutely",
+  "O5-6 says no",
+  "Oli says no",
+  "O5-6 says yes",
+  "Shit... that's a hard question",
+  "Nope, sorry to break your heart"
 ];
 
 // FUNCTIONS
