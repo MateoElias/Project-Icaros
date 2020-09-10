@@ -43,8 +43,8 @@ module.exports = {
 
         const noping = new MessageEmbed()
         .setTitle("You did not specify the ping to utilize!")
-        .setFooter("A!announce #channel `here/everyone/null`")
-        .setColor('34cfeb')
+        .setFooter("A!announce #channel `<here/all/null>`")
+        .setColor('c70808')
         
        async function Sending(){
             const sending = await message.channel.send(sending1)
@@ -57,7 +57,7 @@ module.exports = {
             chnl.send("@here").then(m => m.delete());
             chnl.send(embed)
             message.delete()
-        } else if (args[1] === 'everyone') {
+        } else if (args[1] === 'all') {
             sent.setDescription(`Your announcement has been published successfully in ${chnl}, using @everyone.`)
             Sending();
             chnl.send("@everyone").then(m => m.delete());
