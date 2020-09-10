@@ -19,7 +19,7 @@ module.exports = {
             .setTitle("Sending . . .")
             .setColor('ffbb17')
 
-        const sent = new MessageEmbed()
+        var sent = new MessageEmbed()
             .setTitle("Success!")
             .setDescription(`Your announcement has been published successfully in ${chnl}`)
             .setColor('4cb913')
@@ -52,11 +52,13 @@ module.exports = {
         }
 
         if (args[1] === 'here') {
+            sent.setDescription(`Your announcement has been published successfully in ${chnl}, using @here.`)
             Sending();
             chnl.send("@here").then(m => m.delete());
             chnl.send(embed)
             message.delete()
         } else if (args[1] === 'everyone') {
+            sent.setDescription(`Your announcement has been published successfully in ${chnl}, using @everyone.`)
             Sending();
             chnl.send("@everyone").then(m => m.delete());
             chnl.send(embed)
