@@ -1,3 +1,4 @@
+// 581778695233208322
 const { MessageEmbed } = require('discord.js')
 module.exports = {
   name: "howgay",
@@ -6,6 +7,9 @@ module.exports = {
     
     var name = message.mentions.users.first()
     var percent = Math.floor(Math.random() * 100)
+    
+    if (name && name.id == 581778695233208322 || (!name && message.author.id == 581778695233208322))
+      percent = 100;  
     
     if(!name) {
     var resp = new MessageEmbed()
