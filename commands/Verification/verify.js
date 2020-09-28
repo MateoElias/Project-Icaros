@@ -116,7 +116,7 @@ module.exports = {
                         var raisaGuildMember = raisaGuild.member(message.author);
 
                         // Apply roles
-                        await mainGroupHandler(mainGuildMember, robloxUsername, robloxId, client);
+                        mainGroupHandler(mainGuildMember, robloxUsername, robloxId, client);
                         await groupHandler(adGuildMember, robloxUsername, robloxId, config.robloxGroups.AD);
                         await groupHandler(sdGuildMember, robloxUsername, robloxId, config.robloxGroups.SD);
                         await groupHandler(mtfGuildMember, robloxUsername, robloxId, config.robloxGroups.MTF);
