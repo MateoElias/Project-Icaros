@@ -96,15 +96,35 @@ module.exports = {
                         var robloxId = data.robloxId;
                         var robloxUsername = data.robloxUsername;
 
-                        var mainGuild = client.guilds.cache.find(g => g.id == 660523785845473280);
-
+                        var mainGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.main);
+                        var adGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.AD);
+                        var sdGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.SD);
+                        var mtfGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.MTF);
+                        var scdGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.ScD);
+                        //var ecGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.EC);
+                        var deaGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.DEA);
+                        var raisaGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.RAISA);
+                        
                         // Gather guild members
                         var mainGuildMember = mainGuild.member(message.author);
+                        var adGuildMember = adGuild.member(message.author);
+                        var sdGuildMember = sdGuild.member(message.author);
+                        var mtfGuildMember = mtfGuild.member(message.author);
+                        var scdGuildMember = scdGuild.member(message.author);
+                        // var ecGuildMember = ecGuild.member(message.author);
+                        var deaGuildMember = deaGuildMember(message.author);
+                        var raisaGuildMember = raisaGuild.member(message.author);
 
                         // Apply roles
-                        mainGroupHandler(mainGuildMember, robloxUsername, robloxId, client);
-                        //await groupHandler(adGuildMember, robloxUsername, robloxId, config.robloxGroups.AD)
-
+                        await mainGroupHandler(mainGuildMember, robloxUsername, robloxId, client);
+                        await groupHandler(adGuildMember, robloxUsername, robloxId, config.robloxGroups.AD);
+                        await groupHandler(sdGuildMember, robloxUsername, robloxId, config.robloxGroups.SD);
+                        await groupHandler(mtfGuildMember, robloxUsername, robloxId, config.robloxGroups.MTF);
+                        await groupHandler(scdGuildMember, robloxUsername, robloxId, config.robloxGroups.ScD);
+                        //await groupHandler(ecGuildMember, robloxUsername, robloxId, config.robloxGroups.EC);
+                        await groupHandler(deaGuildMember, robloxUsername, robloxId, config.robloxGroups.DEA);
+                        await groupHandler(raisaGuildMember, robloxUsername, robloxId, config.robloxGroups.RAISA);                                
+                                
                         if (message.channel)
                             message.channel.send(botMessage);
                         else
