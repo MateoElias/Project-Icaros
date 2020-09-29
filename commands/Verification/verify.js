@@ -117,13 +117,13 @@ module.exports = {
 
                         // Apply roles
                         mainGroupHandler(mainGuildMember, robloxUsername, robloxId, client);
-                        await groupHandler(adGuildMember, robloxUsername, robloxId, config.robloxGroups.AD);
-                        await groupHandler(sdGuildMember, robloxUsername, robloxId, config.robloxGroups.SD);
-                        await groupHandler(mtfGuildMember, robloxUsername, robloxId, config.robloxGroups.MTF);
-                        await groupHandler(scdGuildMember, robloxUsername, robloxId, config.robloxGroups.ScD);
+                        groupHandler(adGuildMember, robloxUsername, robloxId, config.robloxGroups.AD);
+                        groupHandler(sdGuildMember, robloxUsername, robloxId, config.robloxGroups.SD);
+                        groupHandler(mtfGuildMember, robloxUsername, robloxId, config.robloxGroups.MTF);
+                        groupHandler(scdGuildMember, robloxUsername, robloxId, config.robloxGroups.ScD);
                         //await groupHandler(ecGuildMember, robloxUsername, robloxId, config.robloxGroups.EC);
-                        await groupHandler(deaGuildMember, robloxUsername, robloxId, config.robloxGroups.DEA);
-                        await groupHandler(raisaGuildMember, robloxUsername, robloxId, config.robloxGroups.RAISA);                                
+                        groupHandler(deaGuildMember, robloxUsername, robloxId, config.robloxGroups.DEA);
+                        groupHandler(raisaGuildMember, robloxUsername, robloxId, config.robloxGroups.RAISA);                                
                                 
                         if (message.channel)
                             message.channel.send(botMessage);
