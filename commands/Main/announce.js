@@ -2,7 +2,7 @@ const {
     MessageEmbed,
 } = require('discord.js');
 module.exports = {
-    name: "nannounce",
+    name: "announce",
     description: "New announcement command",
     run: async (client, message, args) => {
 
