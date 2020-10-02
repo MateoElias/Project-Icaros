@@ -68,7 +68,6 @@ module.exports = {
         if(!ping) return message.channel.send(noping) && message.delete()
 
         async function SHIT(){
-            if(message.channel.type === 'news'
             if(ping === 'here'){
                 ping = '@here'
                 Sending()
@@ -86,7 +85,6 @@ module.exports = {
                 send.edit(areusure.setDescription(`${MSG} \n __Using **no ping** in ${chnl}?__`))
                 chnl.send(embed)
                 }
-             ){message.crosspost()}
             }
         }
 
