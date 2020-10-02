@@ -85,7 +85,6 @@ module.exports = {
                 send.edit(areusure.setDescription(`${MSG} \n __Using **no ping** in ${chnl}?__`))
                 chnl.send(embed)
                 }
-            }
         }
 
         collector.on('collect', (reaction, user) => {
