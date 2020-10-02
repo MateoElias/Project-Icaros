@@ -68,31 +68,25 @@ module.exports = {
         if(!ping) return message.channel.send(noping) && message.delete()
 
         async function SHIT(){
+            if(message.channel.type === 'news'
             if(ping === 'here'){
                 ping = '@here'
                 Sending()
                 chnl.send(ping).then(m => m.delete())
                 chnl.send(embed)
-                if (message.channel.type === 'news') {message.crosspost(embed)
-                .catch(console.error);
-                }
                 message.delete() && send.delete()
             } else if(ping === 'all'){
                 ping = '@everyone'
                 Sending()
                 chnl.send(ping).then(m => m.delete())
                 chnl.send(embed)
-                if (message.channel.type === 'news') {message.crosspost(embed)
-                .catch(console.error);
-                }
                 message.delete() && send.delete()
             } else if(ping === 'null'){
                 Sending()
                 send.edit(areusure.setDescription(`${MSG} \n __Using **no ping** in ${chnl}?__`))
                 chnl.send(embed)
-                if (message.channel.type === 'news') {message.crosspost(embed)
-                .catch(console.error);
                 }
+             ){message.crosspost()}
             }
         }
 
