@@ -17,6 +17,7 @@ module.exports = {
         async function Sending(){
             const sending = await message.channel.send(sending1)
             sending.edit(sent)
+            setTimeout(async () => {await sending.delete();}, 6000); 
         }
 
         //VARIABLE DEFINITION
