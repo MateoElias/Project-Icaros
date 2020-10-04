@@ -90,6 +90,7 @@ module.exports = {
         collector.on('collect', (reaction, user) => {
             if(reaction.emoji.name === '✅') {
                 SHIT();
+                send.delete()
             }
             if(reaction.emoji.name === '❌') {
                 message.delete()
