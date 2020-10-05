@@ -97,7 +97,7 @@ module.exports = {
                         var robloxUsername = data.robloxUsername;
 
                         var mainGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.main);
-                        var adGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.AD);
+                        //var adGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.AD);
                         var sdGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.SD);
                         var mtfGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.MTF);
                         var scdGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.ScD);
@@ -107,7 +107,7 @@ module.exports = {
                         
                         // Gather guild members
                         var mainGuildMember = mainGuild.member(message.author);
-                        var adGuildMember = adGuild.member(message.author);
+                        //var adGuildMember = adGuild.member(message.author);
                         var sdGuildMember = sdGuild.member(message.author);
                         var mtfGuildMember = mtfGuild.member(message.author);
                         var scdGuildMember = scdGuild.member(message.author);
@@ -117,7 +117,7 @@ module.exports = {
 
                         // Apply roles
                         mainGroupHandler(mainGuildMember, robloxUsername, robloxId, client);
-                        groupHandler(adGuildMember, robloxUsername, robloxId, config.robloxGroups.AD);
+                        //groupHandler(adGuildMember, robloxUsername, robloxId, config.robloxGroups.AD);
                         groupHandler(sdGuildMember, robloxUsername, robloxId, config.robloxGroups.SD);
                         groupHandler(mtfGuildMember, robloxUsername, robloxId, config.robloxGroups.MTF);
                         groupHandler(scdGuildMember, robloxUsername, robloxId, config.robloxGroups.ScD);
