@@ -71,7 +71,7 @@ async function groupHandler(guildMember, robloxUsername, robloxId, groupId) {
 // Module
 module.exports.groupHandler = groupHandler; // Don't worry about this, I only have this here just in case Oli gets pissy about something
 module.exports.name = "verify";
-module.export.description = "Verification Command (Experimental)";
+module.exports.description = "Verification Command (Experimental)";
 
 /**
  * The execution of the module
