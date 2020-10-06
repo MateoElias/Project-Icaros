@@ -69,9 +69,9 @@ async function groupHandler(guildMember, robloxUsername, robloxId, groupId) {
 }
 
 // Module
-modules.exports.groupHandler = groupHandler; // Don't worry about this, I only have this here just in case Oli gets pissy about something
-modules.exports.name = "verify";
-modules.export.description = "Verification Command (Experimental)";
+module.exports.groupHandler = groupHandler; // Don't worry about this, I only have this here just in case Oli gets pissy about something
+module.exports.name = "verify";
+module.export.description = "Verification Command (Experimental)";
 
 /**
  * The execution of the module
@@ -79,7 +79,7 @@ modules.export.description = "Verification Command (Experimental)";
  * @param {string} message
  * @param {string[]} args
  */
-modules.run = async (client, message, args) => {
+module.run = async (client, message, args) => {
     // Initialize client-dependant constants
     const config = client.config;
     const discordId = message.author.id;
