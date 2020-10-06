@@ -79,7 +79,7 @@ module.exports.description = "Verification Command (Experimental)";
  * @param {string} message
  * @param {string[]} args
  */
-module.run = async (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     // Initialize client-dependant constants
     const config = client.config;
     const discordId = message.author.id;
