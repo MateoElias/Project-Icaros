@@ -70,23 +70,26 @@ module.exports = {
         if(!ping) return message.channel.send(noping) && message.delete()
 
         async function SHIT(){
-            if(ping === 'here'){
-                ping = '@here'
-                Sending()
-                chnl.send(ping).then(m => m.delete())
-                chnl.send(embed)
-                message.delete() && send.delete()
-            } else if(ping === 'all'){
-                ping = '@everyone'
-                Sending()
-                chnl.send(ping).then(m => m.delete())
-                chnl.send(embed)
-                message.delete() && send.delete()
-            } else if(ping === 'null'){
-                Sending()
-                send.edit(areusure.setDescription(`${MSG} \n __Using **no ping** in ${chnl}?__`))
-                chnl.send(embed)
-                }
+            switch(ping.toLowerCase()) {
+                case 'here':
+                    ping = '@here'
+                    Sending()
+                    chnl.send(ping).then(m => m.delete())
+                    chnl.send(embed)
+                    message.delete() && send.delete()
+                break;
+                case 'everyone' || 'all':
+                    ping = '@everyone'
+                    Sending()
+                    chnl.send(ping).then(m => m.delete())
+                    chnl.send(embed)
+                    message.delete() && send.delete()
+                break;
+                case 'null':
+                    Sending()
+                    send.edit(areusure.setDescription(`${MSG} \n __Using **no ping** in ${chnl}?__`))
+                    chnl.send(embed)
+            }
         }
 
         collector.on('collect', (reaction, user) => {
