@@ -155,14 +155,15 @@ module.exports.run = async (client, message, args) => {
                         break;
                 }
             }
+            
+            if (message.channel)
+                message.channel.send(botMessage);
+            else
+                message.reply(botMessage);
         });
     }).on(`error`, (err) => {
         console.log(err.message);
     });
-
-    if (message.channel)
-        message.channel.send(botMessage);
-    else
-        message.reply(botMessage);
+    
     return;
 };
