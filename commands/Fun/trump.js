@@ -6,8 +6,10 @@ module.exports = {
     run: async (client, message, args) => {
 
         const MSG = message.content.split(" ").slice(1).join(" ");
-        if(!MSG) return message.channel.send("Please input any message")
-
+        if(!MSG){
+            message.channel.send("Please input any message")
+            message.delete()
+        }
         const data = await fetch(`https://api.no-api-key.com/api/v2/trump/?message=${MSG}`).catch(err => message.channel.send(err))
         
         const embed = new MessageEmbed()
