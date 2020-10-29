@@ -119,7 +119,7 @@ module.exports.run = async (client, message, args) => {
         //{ name: "EC", id: config.robloxGroups.EC },
         { name: "DEA", id: config.robloxGroups.DEA },
         { name: "MaD", id: config.robloxGroups.MaD },
-        { name: "RAISA", id: config.robloxGroups.RAISA }
+        //{ name: "RAISA", id: config.robloxGroups.RAISA }
     ];
     const discordGuilds = [
         client.guilds.cache.find(g => g.id == config.discordGuilds.AD),
@@ -129,7 +129,7 @@ module.exports.run = async (client, message, args) => {
         //client.guilds.cache.find(g => g.id == config.discordGuilds.EC),
         client.guilds.cache.find(g => g.id == config.discordGuilds.DEA),
         client.guilds.cache.find(g => g.id == config.discordGuilds.MaD),
-        client.guilds.cache.find(g => g.id == config.discordGuilds.RAISA),
+        //client.guilds.cache.find(g => g.id == config.discordGuilds.RAISA),
     ];
 
     // Begin verification process
