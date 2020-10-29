@@ -1,7 +1,7 @@
 /**
  * verify.js - A Command for verification in Oli's SCPF
  * @author master30304
- * @date September 28th 2020
+ * @date October 29th 2020
  */
 
 // Dependencies
@@ -13,6 +13,33 @@ const https = require(`https`);
 const roverURL = `https://verify.eryn.io/api/user/`;
 
 // Functions
+
+/**
+ * Gathers the JSON response from RoVer's API
+ * @param {Discord.Client} client
+ * @param {Discord.Message} message
+ * @param {Array} args
+ */
+async function getData(message) {
+    return new Promise((resolve, reject) => {
+        var data = ``;
+        https.get(roverURL + message.author.id, (resp) => {
+            resp.on(`data`, (chunk) => { data += chunk; });
+            resp.on(`end`, () => {
+                try {
+                    data = JSON.parse(data);
+                } catch (err) {
+                    console.log(err);
+                    reject(err);
+                }
+                resolve(data);
+            });
+        }).on(`error`, (err) => {
+            console.log(err);
+            reject(err);
+        });
+    });
+}
 
 /**
  * Handles verification for the main group
@@ -27,7 +54,7 @@ async function mainGroupHandler(guildMember, robloxUsername, robloxId, robloxGro
 
     // try {
     if (guildMember) {
-        if(!guildMember.nickname)
+        if (!guildMember.nickname)
             guildMember = await guildMember.edit({ nick: robloxUsername });
 
         if (await noblox.getRankInGroup(config.robloxGroups.main, robloxId) != 0) {
@@ -59,7 +86,7 @@ async function mainGroupHandler(guildMember, robloxUsername, robloxId, robloxGro
  */
 async function groupHandler(guildMember, robloxUsername, robloxId, groupId) {
     if (await noblox.getRankInGroup(groupId, robloxId) != 0) {
-        if (!guildMember.nickname) 
+        if (!guildMember.nickname)
             guildMember = await guildMember.edit({ nick: robloxUsername });
         var rankName = await noblox.getRankNameInGroup(groupId, robloxId);
         var role = guildMember.guild.roles.cache.find(r => r.name == rankName);
@@ -106,64 +133,55 @@ module.exports.run = async (client, message, args) => {
     ];
 
     // Begin verification process
-    var data = ``;
+    var data = await getData(message);
     var botMessage = new Discord.MessageEmbed();
 
     // Send request to RoVer for Verification Data
-    https.get(url, (resp) => {
-        resp.on(`data`, (chunk) => { data += chunk; });
-        resp.on(`end`, async () => {
-            data = JSON.parse(data);
+    if (data.status == "ok") { // If the request was successfully made
+        botMessage.setTitle(`Verification Successful!`);
+        botMessage.setDescription(`You are currently verified as **${data.robloxUsername}**. If you wish to reverify your account, click [here](https://verify.eryn.io/) and follow the instructions.`);
+        botMessage.setColor('4cb913');
 
-            if (data.status == "ok") { // If the request was successfully made
-                botMessage.setTitle(`Verification Successful!`);
-                botMessage.setDescription(`You are currently verified as **${data.robloxUsername}**. If you wish to reverify your account, click [here](https://verify.eryn.io/) and follow the instructions.`);
-                botMessage.setColor('4cb913');
+        var robloxUsername = data.robloxUsername;
+        var robloxId = data.robloxId;
 
-                var robloxUsername = data.robloxUsername;
-                var robloxId = data.robloxId;
+        // Main Guild Verification
+        var mainGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.main);
+        var mainGuildMember = mainGuild.member(message.author);
+        await mainGroupHandler(mainGuildMember, robloxUsername, robloxId, robloxGroups, client);
 
-                // Main Guild Verification
-                var mainGuild = client.guilds.cache.find(g => g.id == config.discordGuilds.main);
-                var mainGuildMember = mainGuild.member(message.author);
-                await mainGroupHandler(mainGuildMember, robloxUsername, robloxId, robloxGroups, client);
+        // Other Group Verification
+        var guildMember;
+        for (var i = 0; i < discordGuilds.length; i++) {
+            guildMember = discordGuilds[i].member(message.author);
+            if (guildMember)
+                await groupHandler(guildMember, robloxUsername, robloxUsername, robloxGroups[i].id);
+        }
+    } else {
+        switch (data.errorCode) {
+            case "404":
+                botMessage.setTitle(`Error Code 404!`);
+                botMessage.setDescription(`Your discord account isn't linked to a Roblox account. To verify your account, click [here](https://verify.eryn.io/) and follow the instructions.`);
+                botMessage.setColor('c70808');
+                break;
+            case "429":
+                botMessage.setTitle(`Error Code 429`);
+                botMessage.setDescription(`There was an error verifying your account (Too many requests). **Please try again after ${data.retryAfterSeconds} seconds**. If this error persists, please contact @master10104#3395 with the error code.`);
+                botMessage.setColor('c70808');
+                break;
+            default:
+                botMessage.setTitle(`Error Code ${data.errorCode}`);
+                botMessage.setDescription(`There was an error verifying your account. Please try again later. If thise error persists, please contact @master10104#3395 with the error message below.`);
+                botMessage.setColor('c70808');
+                botMessage.addField("**__Error Message__**", data.error);
+                break;
+        }
+    }
 
-                // Other Group Verification
-                var guildMember;
-                for (var i = 0; i < discordGuilds.length; i++) {
-                    guildMember = discordGuilds[i].member(message.author);
-                    if (guildMember)
-                        await groupHandler(guildMember, robloxUsername, robloxUsername, robloxGroups[i].id);
-                }
-            } else {
-                switch (data.errorCode) {
-                    case "404": 
-                        botMessage.setTitle(`Error Code 404!`);
-                        botMessage.setDescription(`Your discord account isn't linked to a Roblox account. To verify your account, click [here](https://verify.eryn.io/) and follow the instructions.`);
-                        botMessage.setColor('c70808');
-                        break;
-                    case "429":
-                        botMessage.setTitle(`Error Code 429`);
-                        botMessage.setDescription(`There was an error verifying your account (Too many requests). **Please try again after ${data.retryAfterSeconds} seconds**. If this error persists, please contact @master10104#3395 with the error code.`);
-                        botMessage.setColor('c70808');
-                        break;
-                    default:
-                        botMessage.setTitle(`Error Code ${data.errorCode}`);
-                        botMessage.setDescription(`There was an error verifying your account. Please try again later. If thise error persists, please contact @master10104#3395 with the error message below.`);
-                        botMessage.setColor('c70808');
-                        botMessage.addField("**__Error Message__**", data.error);
-                        break;
-                }
-            }
-            
-            if (message.channel)
-                message.channel.send(botMessage);
-            else
-                message.reply(botMessage);
-        });
-    }).on(`error`, (err) => {
-        console.log(err.message);
-    });
-    
+    if (message.channel)
+        message.channel.send(botMessage);
+    else
+        message.reply(botMessage);
+
     return;
 };
