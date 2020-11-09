@@ -22,7 +22,7 @@ client.categories = fs.readdirSync('./commands/');
         console.log('Alexandra.AIC Is up and running!')
         let botStatus = [
             `${prefix}help`,
-            `over ${client.users.cache.size.toLocaleString()} users!`,
+            `over ${client.users.cache.size} users!`,
             'the site\'s CCTV'
         ]
     
