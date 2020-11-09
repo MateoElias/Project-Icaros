@@ -1,6 +1,6 @@
 const {Collection,Client,Discord} = require('discord.js');
 const fs = require('fs');
-const client = new Client;
+const client = new Client({ ws: { intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_PRESENCES'] } });
 const config = require('./config.json')
 const mongoose = require('mongoose');
 const token = process.env.TOKEN;
