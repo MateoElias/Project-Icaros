@@ -1,13 +1,14 @@
 // VARIABLES * CONSTANTS
 const fetch = require('node-fetch');
-var response = await fetch('https://no-api-key.com/api/v1/magic8ball')
-response = await response.json()
-
 // COMMAND DEFINITION
 module.exports = {
   name: "8ball",
   descriptions: "magic vodoo stuff idk man",
   run: async(client, message, args) => {
+    var response = await fetch('https://no-api-key.com/api/v1/magic8ball')
+    response = await response.json()
+    
+    
     if (!args[0]) {
       if (message.channel)
         message.channel.send("this time actually ask me something");
