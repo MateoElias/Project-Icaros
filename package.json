@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/chaosinsurgent/Project-Icaros.git"
   },
-  "author": "Eliaaaaaas#0937",
+  "author": "Mateo Ch. マテオエリアス#0937",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/chaosinsurgent/Project-Icaros/issues"
@@ -20,9 +20,8 @@
     "axios": "^0.19.2",
     "discord.js": "^12.5.1",
     "mongoose": "^5.9.18",
-    "ms": "^2.1.2",
     "noblox.js": "^4.7.3",
     "node-fetch": "^2.6.1",
-    "node-pre-gyp": "^0.15.0"
+    "node-pre-gyp": "^0.15.0",
   }
 }
