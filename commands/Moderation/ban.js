@@ -53,7 +53,7 @@ module.exports = {
             .setColor('c70808');
 
 
-        member.ban({ reason: reason, days: 7 })
+        member.ban({ reason: `${reason} | -${message.member.displayName}`, days: 7 })
         .then(() => {
             message.channel.send(success);
         }).catch((e) => {
