@@ -64,8 +64,11 @@ module.exports = {
         await send.react('❌')
         await send.react('✅')
 
-        const filter = (reaction, user) => reaction.emoji.name === ':ok_hand:' || reaction.emoji.name === ':x:';
-        const collector = send.createReactionCollector(filter, {time: 15000});
+        var filterAccept = (reaction, user) => reaction.emoji.name === ':ok_hand:' && user.id === message.author.id;
+        var filterDeny = (reaction, user) => reaction.emoji.name === ':x:' && user.id === message.author.id;
+        
+        var acceptCollector = message.createReactionCollector(filterAccept, {time: 15000});
+        var denyCollector = message.createReactionCollector(filterDeny, {time: 15000});
 
         if(!ping) return message.channel.send(noping) && message.delete()
 
@@ -91,21 +94,18 @@ module.exports = {
                     chnl.send(embed)
             }
         }
-
-        collector.on('collect', (reaction, user) => {
-            console.log(reaction);
-            console.log(user.id);
-            if(reaction.emoji.name == '✅') {
-                console.log("Shit bruh alright")
-                SHIT();
-                send.delete()
-            }
-            if(reaction.emoji.name == '❌') {
-                console.log("Get Nae Nae'd bitch")
-                message.delete()
-                send.delete()
-                message.channel.send("Action Halted")
-            }
-        })
+        
+        acceptCollector.on('collect', (reaction, user) => {
+            console.log("Shit bruh alright");
+            SHIT();
+            send.delete();
+        });
+        
+        denyCollector.on('collect', (reaction, user) => {
+            console.log("Get Nae Nae'd bitch")
+            message.delete()
+            send.delete()
+            message.channel.send("Action Halted") 
+        });
     }
 }
