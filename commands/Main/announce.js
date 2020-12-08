@@ -93,12 +93,12 @@ module.exports = {
         }
 
         collector.on('collect', (reaction, user) => {
-            if(reaction.emoji.name == ':white_check_mark:') {
+            if(reaction.emoji.name == '✅') {
                 console.log("Shit bruh alright")
                 SHIT();
                 send.delete()
             }
-            if(reaction.emoji.name == ':x:') {
+            if(reaction.emoji.name == '❌') {
                 console.log("Get Nae Nae'd bitch")
                 message.delete()
                 send.delete()
