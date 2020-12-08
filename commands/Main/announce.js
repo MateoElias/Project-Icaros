@@ -3,6 +3,8 @@ module.exports = {
     name: "announce",
     description: "New announcement command",
     run: async (client, message, args) => {
+        
+        console.log("Oli I hate you so much \n- Mateo")
 
         const sending1 = new Discord.MessageEmbed()
         .setTitle("Sending . . .")
