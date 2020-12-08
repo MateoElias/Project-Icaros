@@ -93,6 +93,8 @@ module.exports = {
         }
 
         collector.on('collect', (reaction, user) => {
+            console.log(reaction);
+            console.log(user.id);
             if(reaction.emoji.name == '✅') {
                 console.log("Shit bruh alright")
                 SHIT();
