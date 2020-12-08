@@ -65,7 +65,7 @@ module.exports = {
         await send.react('✅')
 
         const filter = (reaction, user) => ['❌', '✅'].includes(reaction.emoji.name) && (message.author.id === user.id)
-        const collector = send.createReactionCollector(filter);
+        const collector = send.createReactionCollector(filter, time: 30000);
 
         if(!ping) return message.channel.send(noping) && message.delete()
 
