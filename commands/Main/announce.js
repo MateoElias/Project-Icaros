@@ -64,7 +64,7 @@ module.exports = {
         await send.react('❌')
         await send.react('✅')
 
-        var filterAccept = (reaction, user) => reaction.emoji.name === ':ok_hand:' && user.id === message.author.id;
+        var filterAccept = (reaction, user) => reaction.emoji.name === ':white_check_mark:' && user.id === message.author.id;
         var filterDeny = (reaction, user) => reaction.emoji.name === ':x:' && user.id === message.author.id;
         
         var acceptCollector = message.createReactionCollector(filterAccept, {time: 15000});
