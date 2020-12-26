@@ -10,10 +10,11 @@ module.exports = {
         .setTitle("Sending . . .")
         .setColor('ffbb17')
 
-    var sent = new Discord.MessageEmbed()
+        var sent = new Discord.MessageEmbed()
         .setTitle("Success!")
         .setDescription('Your announcement has been published successfully.')
         .setColor('4cb913')
+    
         async function Sending(){
             var sending = await message.channel.send(sending1)
             sending.edit(sent)
@@ -48,27 +49,10 @@ module.exports = {
             .setTimestamp()
             .setFooter("Alexandra.AIC | Developed by: O5-6", 'https://cdn.discordapp.com/attachments/667913030629195786/728325820715892736/Alexandra.png')
 
-        const areusure = new Discord.MessageEmbed()
-            .setTitle("Are you sure you want to send this announcement?")
-            .setDescription(`${MSG} \n __Using the **${ping.toUpperCase()}** ping in ${chnl}?__`)
-            .setColor('ffbb17')
-            .setThumbnail('https://cdn.discordapp.com/attachments/730670936088641559/761689831561625630/alex_sad.png')
-            .setFooter('Use the "❌" and "✅" to confirm or deny.')
-
         const noping = new Discord.MessageEmbed()
             .setTitle("You did not specify the ping to utilize!")
             .setFooter("A!announce #channel `<here/all/null>`")
             .setColor('c70808')
-
-        var send = await message.channel.send(areusure)
-        await send.react('❌')
-        await send.react('✅')
-
-        var filterAccept = (reaction, user) => reaction.emoji.name === ':white_check_mark:' && user.id === message.author.id;
-        var filterDeny = (reaction, user) => reaction.emoji.name === ':x:' && user.id === message.author.id;
-        
-        var acceptCollector = message.createReactionCollector(filterAccept, {time: 15000});
-        var denyCollector = message.createReactionCollector(filterDeny, {time: 15000});
 
         if(!ping) return message.channel.send(noping) && message.delete()
 
@@ -79,33 +63,21 @@ module.exports = {
                     Sending()
                     chnl.send(ping).then(m => m.delete())
                     chnl.send(embed)
-                    message.delete() && send.delete()
+                    message.delete()
                 break;
                 case 'everyone' || 'all':
                     ping = '@everyone'
                     Sending()
                     chnl.send(ping).then(m => m.delete())
                     chnl.send(embed)
-                    message.delete() && send.delete()
+                    message.delete()
                 break;
                 case 'null':
                     Sending()
-                    send.edit(areusure.setDescription(`${MSG} \n __Using **no ping** in ${chnl}?__`))
                     chnl.send(embed)
             }
         }
         
-        acceptCollector.on('collect', (reaction, user) => {
-            console.log("Shit bruh alright");
-            SHIT();
-            send.delete();
-        });
-        
-        denyCollector.on('collect', (reaction, user) => {
-            console.log("Get Nae Nae'd bitch")
-            message.delete()
-            send.delete()
-            message.channel.send("Action Halted") 
-        });
+      SHIT()
     }
 }
