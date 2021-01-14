@@ -20,5 +20,10 @@
         "DEA": 717062618619183145,
         "MaD": 682649081817989183,
         "RAISA": 735947892254179380
+    },
+    "trelloInfo": {
+        "trelloToken": "3b4d24a103ac76cb1d56dc6a08561a2e9f037cd0b91e8bd858052de069ffbf4d",
+        "KEY": "1466ce05a903e325d4ffee37ab84ce2c",
+        "ID": "6000bb3fcb4638858d9b18b9"
     }
 }
