@@ -62,19 +62,25 @@ module.exports = {
                     ping = '@here'
                     Sending()
                     chnl.send(ping).then(m => m.delete())
-                    chnl.send(embed)
+                    if(chnl.type === 'news'){
+                        chnl.send(embed).then(cross => cross.crosspost()).catch(err => console.log(err))
+                    }
                     message.delete()
                 break;
                 case 'everyone' || 'all':
                     ping = '@everyone'
                     Sending()
                     chnl.send(ping).then(m => m.delete())
-                    chnl.send(embed)
+                    if(chnl.type === 'news'){
+                        chnl.send(embed).then(cross => cross.crosspost()).catch(err => console.log(err))
+                    }
                     message.delete()
                 break;
                 case 'null':
                     Sending()
-                    chnl.send(embed)
+                    if(chnl.type === 'news'){
+                        chnl.send(embed).then(cross => cross.crosspost()).catch(err => console.log(err))
+                    }
             }
         }
         
