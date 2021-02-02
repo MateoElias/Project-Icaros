@@ -55,7 +55,9 @@ async function mainGroupHandler(guildMember, robloxUsername, robloxId, robloxGro
     // try {
     if (guildMember) {
         if (!guildMember.nickname)
-            guildMember = await guildMember.edit({ nick: robloxUsername });
+            guildMember = await guildMember.edit({ nick: robloxUsername }).catch(err => {
+                message.channel.send("I was unable to change your nickname due to a permission restriction")
+            });
 
         if (await noblox.getRankInGroup(config.robloxGroups.main, robloxId) != 0) {
             // Apply the rank in the main group
