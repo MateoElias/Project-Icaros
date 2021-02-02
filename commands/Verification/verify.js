@@ -176,12 +176,10 @@ module.exports.run = async (client, message, args) => {
                 botMessage.addField("**__Error Message__**", data.error);
                 break;
         }
+        
+        message.channel.send(botMessage)
+        
     }
-
-    if (message.channel)
-        message.channel.send(botMessage);
-    else
-        message.reply(botMessage);
 
     return;
 };
