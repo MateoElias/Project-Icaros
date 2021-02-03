@@ -62,7 +62,7 @@ module.exports = {
                     chnl.send(ping).then(m => m.delete())
                     if(chnl.type === 'news'){
                         chnl.send(embed).then(cross => cross.crosspost()).catch(err => console.log(err))
-                    }
+                    } else { chnl.send(embed) }
                     message.delete()
                 break;
                 case 'everyone' || 'all':
@@ -71,14 +71,14 @@ module.exports = {
                     chnl.send(ping).then(m => m.delete())
                     if(chnl.type === 'news'){
                         chnl.send(embed).then(cross => cross.crosspost()).catch(err => console.log(err))
-                    }
+                    } else { chnl.send(embed) }
                     message.delete()
                 break;
                 case 'null':
                     Sending()
                     if(chnl.type === 'news'){
                         chnl.send(embed).then(cross => cross.crosspost()).catch(err => console.log(err))
-                    }
+                    } else { chnl.send(embed) }
             }
         }
         
