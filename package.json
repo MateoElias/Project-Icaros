@@ -3,6 +3,9 @@
   "version": "3.0.0",
   "description": "Alexandra.AIC reprogrammed in Discord.js V12.",
   "main": "icaros.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "test": "echo"
   },
@@ -17,10 +20,9 @@
   },
   "homepage": "https://github.com/chaosinsurgent/Project-Icaros#readme",
   "dependencies": {
-    "axios": "^0.21.1",
     "discord.js": "^12.5.1",
     "mongoose": "^5.9.18",
-    "noblox.js": "^4.7.3",
+    "noblox.js": "^4.8.3",
     "node-fetch": "^2.6.1",
     "node-pre-gyp": "^0.15.0"
   }
