@@ -44,6 +44,20 @@ module.exports = {
             })
             .setFooter("Welp! Try not to be like that guy!")
             .setColor('4cb913');
+        
+        var dm = new Discord.MessageEmbed()
+            .setTitle(`You have been kicked from ${message.guild.name}`)
+            .addFields({
+                name: "__Moderator:__",
+                value: `\`${message.member.displayName}\``,
+                inline: true
+            }, {
+                name: "__Reason:__",
+                value: `${reason}`,
+                inline: true
+            })
+            .setFooter("There's always a first time... I guess?")
+            .setColor('4cb913');
 
         var error3 = new Discord.MessageEmbed()
             .setTitle("Error")
@@ -51,14 +65,14 @@ module.exports = {
             .setFooter("Remember to properly mention the user, or check if the user is on the server.")
             .setColor('c70808');
 
-
-        member.kick({ reason: reason})
-        .then(() => {
-            message.channel.send(success);
-        }).catch((e) => {
-            console.log(e)
-            message.channel.send(error3)
-        });
+        try{
+            await user.send(dm)
+            await member.kick({ reason: reason})
+            .then(() => {message.channel.send(success)})
+        } catch(err) {
+            await message.channel.send(error3)
+            console.log(err)
+        }
 
     }
 

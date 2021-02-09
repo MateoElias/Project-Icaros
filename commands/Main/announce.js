@@ -3,8 +3,6 @@ module.exports = {
     name: "announce",
     description: "New announcement command",
     run: async (client, message, args) => {
-        
-        console.log("Oli I hate you so much \n- Mateo")
 
         const sending1 = new Discord.MessageEmbed()
         .setTitle("Sending . . .")
@@ -62,19 +60,25 @@ module.exports = {
                     ping = '@here'
                     Sending()
                     chnl.send(ping).then(m => m.delete())
-                    chnl.send(embed)
+                    if(chnl.type === 'news'){
+                        chnl.send(embed).then(cross => cross.crosspost()).catch(err => console.log(err))
+                    } else { chnl.send(embed) }
                     message.delete()
                 break;
                 case 'everyone' || 'all':
                     ping = '@everyone'
                     Sending()
                     chnl.send(ping).then(m => m.delete())
-                    chnl.send(embed)
+                    if(chnl.type === 'news'){
+                        chnl.send(embed).then(cross => cross.crosspost()).catch(err => console.log(err))
+                    } else { chnl.send(embed) }
                     message.delete()
                 break;
                 case 'null':
                     Sending()
-                    chnl.send(embed)
+                    if(chnl.type === 'news'){
+                        chnl.send(embed).then(cross => cross.crosspost()).catch(err => console.log(err))
+                    } else { chnl.send(embed) }
             }
         }
         

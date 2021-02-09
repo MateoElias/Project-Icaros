@@ -4,7 +4,7 @@ module.exports = (bot) => {
        const commands = readdirSync(`./commands/${dir}/`).map(cmd=>{
            let pull = require(`../commands/${dir}/${cmd}`)
            console.log(`Loaded command ${pull.name}`)
-           bot.commands.set(pull.name,pull)
+           bot.commands.set(pull.name.toLowerCase(),pull)
            if(cmd.aliases){
                cmd.aliases.forEach(p=>{
                    bot.aliases.set(p,pull)
