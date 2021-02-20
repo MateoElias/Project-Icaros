@@ -5,47 +5,41 @@ module.exports = {
     description: "Mutes a user",
     run: async (client, message, args) => {
 
-        const User = message.mentions.users.first();
-        var nouser = new Discord.MessageEmbed()
-            .setTitle("You did not mention a user!")
-            .setDescription("Remember to specify the user you want to mute.")
-            .setFooter("A!mute @OliCalds")
-            .setColor('34cfeb')
-        if (!User) return message.channel.send(nouser).then(message.delete)
+        if(!message.member.hasPermission('KICK_MEMBERS')) return;
 
-        const mutedrole = message.guild.roles.cache.get('681953663664783371');
+        // Main Variables
+        const target = message.mentions.members.first()
+        const time = args[0]
+        const reason = message.content.split(" ").slice(3).join(" ")
+        const mutedRole = message.guild.roles.cache.find(r => r.name == "Muted")
 
-        const mutedalready = new Discord.MessageEmbed()
-            .setTitle('This user has been muted already!')
-            .setFooter('At least have some mercy with this guy!')
-            .setColor('34cfeb')
-        if(User.role.cache.some(role => role.name === 'Muted')) return message.channel.send(mutedalready)
+        //Control if Statements
+        if(!mutedRole) return message.channel.send("I was unable to find a Muted role.")
+        if(target.hasPermission('KICK_MEMBERS')) return message.channel.send("This user is also a moderator")
 
-        const success = new Discord.MessageEmbed()
-        .setTitle('User muted!')
-        .setDescription(`${User} has been muted successfully!`)
-        .setFooter('Bigmouth!')
-        .setColor('34cfeb')
+        if(time){
+            try {
+                target.roles.remove(target.roles.cache)
+                target.roles.add(mutedRole)
+                console.log(target.nickname + " Has been muted for " + time + ", for " + reason)
 
-        const DM = new Discord.MessageEmbed()
-        .setTitle('You have been muted')
-        .setDescription(`You have been muted in ${message.guild.name}`)
-        .addField('__Moderator:__', message.member.displayName, true)
-        .setFooter('Well that was unfortunate.')
-        .setColor('34cfeb')
+                setInterval(async function() {
+                    target.roles.remove(mutedRole)
+                    console.log(target.nickname + " Has been Un-Muted")
+                }, ms(ms(time)))
 
-        const noDM = new Discord.MessageEmbed()
-        .setTitle('I was unable to send the Direct Message option due to the user having its DMs closed.')
-        .setColor('c70808')
-        .setFooter('That\'s rude y\'know?')
+            } catch(error) {
+                console.log(error)
+            }
 
-        User.roles.add(mutedrole)
-        message.channel.send(success)
-        message.delete()
-        try{
-           await User.send(DM)
-        } catch(e) {
-            await message.channel.send(noDM)
+        } else {
+            try {
+                target.roles.remove(target.roles.cache)
+                target.roles.add(mutedRole)
+            } catch (error) {
+                console.log(error)
+            }
         }
+
     }
 }
