@@ -1,3 +1,4 @@
+/*
 const Discord = require('discord.js')
 const ms = require('ms')
 module.exports = {
@@ -44,3 +45,4 @@ module.exports = {
         console.log(args)
     }
 }
+*/
