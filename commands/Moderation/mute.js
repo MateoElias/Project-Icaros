@@ -9,7 +9,7 @@ module.exports = {
 
         // Main Variables
         const target = message.mentions.members.first()
-        const time = args[0]
+        const time = args[1]
         const reason = message.content.split(" ").slice(3).join(" ")
         const mutedRole = message.guild.roles.cache.find(r => r.name == "Muted")
 
