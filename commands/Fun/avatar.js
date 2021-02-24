@@ -9,7 +9,7 @@ module.exports = {
     const embed = new MessageEmbed()
     .setColor('34cfeb')
     
-    if(!target){
+    if(target){
       embed.setImage(target.displayAvatarURL())
     } else {
       embed.setImage(message.author.displayAvatarURL())
