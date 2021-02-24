@@ -1,4 +1,3 @@
-/*
 const Discord = require('discord.js')
 const ms = require('ms')
 module.exports = {
@@ -18,7 +17,7 @@ module.exports = {
         if(!mutedRole) return message.channel.send("I was unable to find a Muted role.")
         if(target.hasPermission('KICK_MEMBERS')) return message.channel.send("This user is also a moderator")
 
-        if(time){
+        /*if(time){
             try {
                 target.roles.remove(target.roles.cache)
                 target.roles.add(mutedRole)
@@ -40,9 +39,8 @@ module.exports = {
             } catch (error) {
                 console.log(error)
             }
-        }
+        }*/
 
         console.log(args)
     }
 }
-*/
