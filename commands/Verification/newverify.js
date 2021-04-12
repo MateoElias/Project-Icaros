@@ -15,10 +15,10 @@ module.exports = {
 
         async function mainGroupHandler(robloxId, groupId){
 
-            const isInGroup = await nbx.getRankInGroup(groupId, robloxId) != 0
+            const isInGroup = await noblox.getRankInGroup(groupId, robloxId) != 0
 
             if(isInGroup){
-                const rankName = await nbx.getRankNameInGroup(groupId, robloxId)
+                const rankName = await noblox.getRankNameInGroup(groupId, robloxId)
                 const guild = message.guild
 
                 var role = guild.roles.cache.find(r => r.name == rankName);
