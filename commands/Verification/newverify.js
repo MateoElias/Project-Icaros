@@ -23,15 +23,15 @@ module.exports = {
 
                 var role = guild.roles.cache.find(r => r.name == rankName);
 
-                GuildMember.roles.remove(GuildMember.roles.cache.some(r => r.name == rankName))
+                message.member.roles.remove(message.member.roles.cache.some(r => r.name == rankName))
                 try {
-                    await GuildMember.roles.add(role)
+                    await message.member.roles.add(role)
                 } catch (err) {
                     message.channel.send("I am unable to find a role to give.")
                 }
             } else {
-                GuildMember.roles.remove(GuildMember.roles.cache)
-                GuildMember.roles.add(r => r.name == 'Class D')
+                message.member.roles.remove(message.member.roles.cache)
+                message.member.roles.add(r => r.name == 'Class D')
             }
         }
 
