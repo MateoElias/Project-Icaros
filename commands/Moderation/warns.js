@@ -18,6 +18,8 @@ module.exports = {
           return message.channel.send(
             `${user.user.tag} has not got any warns in this guild!`
           );
+        
+        console.log(data)
         let Embed = new MessageEmbed()
           .setTitle(`${user.user.tag}'s warns in ${message.guild.name}.. `)
           .setDescription(
