@@ -1,14 +1,35 @@
-// VARIABLES * CONSTANTS
-const fetch = require('node-fetch');
+const responses = [
+  "lol sure",
+  "im an 8ball not a deal with your shit ball",
+  "absolutely not",
+  "lol, over dr. bright's dead body",
+  "aye aye captain",
+  "nice cut g",
+  "you're objectively wrong m8",
+  "okay that's maybe an OK from me",
+  "bro absolutely",
+  "as long as you don't tell Dr. Bright",
+  "Sure thing chief",
+  "[REDACTED]",
+  "Without a doubt",
+  "sign points to yes",
+  "absolutely",
+  "Mateo says no",
+  "Oli says no",
+  "Mateo says yes",
+  "Shit... that's a hard question",
+  "Nope, sorry to break your heart",
+  "Yes, but do it drunk as fuck"
+];
+
+// FUNCTIONS
+function getResponse() {return responses[Math.floor(Math.random()*responses.length)];}
+
 // COMMAND DEFINITION
 module.exports = {
   name: "8ball",
   descriptions: "magic vodoo stuff idk man",
   run: async(client, message, args) => {
-    var response = await fetch('https://no-api-key.com/api/v1/magic8ball')
-    response = await response.json()
-    
-    
     if (!args[0]) {
       if (message.channel)
         message.channel.send("this time actually ask me something");
@@ -17,7 +38,7 @@ module.exports = {
       return;
     }
 
-    let resp = ":8ball: " + response.response
+    let resp = ":8ball: " + getResponse();
     if (message.channel)
       message.channel.send(resp);
     else
