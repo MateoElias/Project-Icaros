@@ -3,6 +3,8 @@ module.exports = {
     name: "announce",
     description: "New announcement command",
     run: async (client, message, args) => {
+        
+        if (!message.member.hasPermission('KICK_MEMBERS')) return;
 
         const sending1 = new Discord.MessageEmbed()
         .setTitle("Sending . . .")
