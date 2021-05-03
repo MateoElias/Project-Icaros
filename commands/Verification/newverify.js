@@ -31,7 +31,7 @@ module.exports = {
                 }
             } else {
                 message.member.roles.remove(message.member.roles.cache)
-                message.member.roles.add(r => r.name == 'Class D')
+                message.member.roles.add(message.guild.roles.cache.find(r => r.name == 'Class D'))
             }
         }
 
