@@ -20,7 +20,8 @@ module.exports = {
           );
         
         console.log(data)
-        let Embed = new MessageEmbed()
+        console.log(user)
+        /*let Embed = new MessageEmbed()
           .setTitle(`${user.user.tag}'s warns in ${message.guild.name}.. `)
           .setDescription(
             data.map((d) => {
@@ -31,8 +32,8 @@ module.exports = {
                   } Reason: ${w.Reason}`
               ).join("\n");
             })
-          );
-        message.channel.send(Embed);
+          );*/
+       // message.channel.send(Embed);
       }
     );
   },
