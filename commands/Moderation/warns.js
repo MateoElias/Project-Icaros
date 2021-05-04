@@ -28,8 +28,8 @@ module.exports = {
             data.map((d) => {
               return d.Warns.map(
                 (w, i) =>
-                  `${i} - **Moderator**: ${
-                    message.guild.members.cache.find(n => n.username == w.Moderator)
+                  `${i+1} - **Moderator**: ${
+                    message.guild.users.cache.find(n => n.username == w.Moderator)
                   } **Reason:** __${w.Reason}__`
               ).join("\n");
             })
