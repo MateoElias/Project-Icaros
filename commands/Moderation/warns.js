@@ -28,9 +28,9 @@ module.exports = {
             data.map((d) => {
               return d.Warns.map(
                 (w, i) =>
-                console.log(w)
+                console.log(message.guild.members.cache.find(n => n.name == w.Moderator))
                   `${i} - **Moderator**: ${
-                    message.guild.members.cache.find(n => n.name == w.Moderator).nickname
+                    "FIXING"
                   } **Reason:** __${w.Reason}__`
               ).join("\n");
             })
