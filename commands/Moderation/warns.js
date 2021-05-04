@@ -28,8 +28,9 @@ module.exports = {
             data.map((d) => {
               return d.Warns.map(
                 (w, i) =>
+                console.log(w)
                   `${i} - **Moderator**: ${
-                    message.guild.members.cache.get(w.Moderator).user
+                    message.guild.members.cache.get(w.Moderator)
                   } **Reason:** __${w.Reason}__`
               ).join("\n");
             })
