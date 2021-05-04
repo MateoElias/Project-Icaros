@@ -19,10 +19,10 @@ module.exports = {
             `${user.user.tag} has not got any warns in this guild!`
           );
         
-        console.log(data)
-        console.log(user)
-        /*let Embed = new MessageEmbed()
-          .setTitle(`${user.user.tag}'s warns in ${message.guild.name}.. `)
+        //console.log(data)
+        //console.log(user)
+        let Embed = new MessageEmbed()
+          .setTitle(`${user.User.tag}'s warns in ${message.guild.name}.. `)
           .setDescription(
             data.map((d) => {
               return d.Warns.map(
@@ -32,7 +32,7 @@ module.exports = {
                   } Reason: ${w.Reason}`
               ).join("\n");
             })
-          );*/
+          );
        // message.channel.send(Embed);
       }
     );
