@@ -30,7 +30,7 @@ module.exports = {
                 (w, i) =>
                 console.log(w)
                   `${i} - **Moderator**: ${
-                    message.guild.members.cache.get(w.Moderator)
+                    message.guild.members.cache.find(n => n.name == w.Moderator).nickname
                   } **Reason:** __${w.Reason}__`
               ).join("\n");
             })
