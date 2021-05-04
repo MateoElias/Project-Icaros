@@ -22,14 +22,15 @@ module.exports = {
         //console.log(data)
         //console.log(user)
         let Embed = new MessageEmbed()
-          .setTitle(`${user.nickname}'s warns in ${message.guild.name}.. `)
+          .setTitle(`${user.nickname}'s warns in ${message.guild.name}:`)
+          .setColor('34cfeb')
           .setDescription(
             data.map((d) => {
               return d.Warns.map(
                 (w, i) =>
-                  `${i} - Moderator: ${
-                    message.guild.members.cache.get(w.Moderator)
-                  } Reason: ${w.Reason}`
+                  `${i} - **Moderator**: ${
+                    message.guild.members.cache.get(w.Moderator).user
+                  } **Reason:** __${w.Reason}__`
               ).join("\n");
             })
           );
