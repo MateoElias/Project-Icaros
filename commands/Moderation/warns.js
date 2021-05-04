@@ -22,13 +22,13 @@ module.exports = {
         //console.log(data)
         //console.log(user)
         let Embed = new MessageEmbed()
-          .setTitle(`${user.User.tag}'s warns in ${message.guild.name}.. `)
+          .setTitle(`${user.nickname}'s warns in ${message.guild.name}.. `)
           .setDescription(
             data.map((d) => {
               return d.Warns.map(
                 (w, i) =>
                   `${i} - Moderator: ${
-                    message.guild.members.cache.get(w.Moderator).user.tag
+                    message.guild.members.cache.get(w.Moderator)
                   } Reason: ${w.Reason}`
               ).join("\n");
             })
