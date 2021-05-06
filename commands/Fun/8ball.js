@@ -1,6 +1,5 @@
 const fetch = require('node-fetch')
 
-// COMMAND DEFINITION
 module.exports = {
   name: "8ball",
   descriptions: "magic vodoo stuff idk man",
@@ -11,9 +10,7 @@ module.exports = {
     
     fetch(`https://8ball.delegator.com/magic/JSON/${msg}`)
     .then(res => res.json())
-    .then(data => {
-      message.channel.send(`🎱 ${data.magic.answer}`)
-    })
-    
+    .then(data => { message.channel.send(`🎱 ${data.magic.answer}`) })
+    .catch(error => message.reply("Ayo, I'm having a hard time figuring out an answer for that question, try again later"))
   }
 }
