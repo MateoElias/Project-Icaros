@@ -11,9 +11,9 @@ module.exports = {
     
     fetch(`https://8ball.delegator.com/magic/JSON/${msg}`)
     .then(res => res.json())
-    .then(answer => {
-      
-      message.channel.send(`🎱 ${answer.answer}`)
+    .then(data => {
+      console.log(data.answer)
+      message.channel.send(`🎱 ${data.answer}`)
     })
     
   }
