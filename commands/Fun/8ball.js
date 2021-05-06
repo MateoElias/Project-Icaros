@@ -9,12 +9,11 @@ module.exports = {
     
     if(!msg) return message.reply("This time actually ask me something")
     
-    console.log(msg)
-    
     fetch(`https://8ball.delegator.com/magic/JSON/${msg}`)
     .then(res => res.json())
     .then(answer => {
-      console.log(answer)
+      
+      message.channel.send(`🎱 ${answer.answer}`)
     })
     
   }
