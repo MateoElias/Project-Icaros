@@ -9,7 +9,7 @@ module.exports = (bot) => {
                cmd.aliases.forEach(p=>{
                    bot.aliases.set(p,pull)
                })
-           }
+           } else {message.reply("That command does not exist")}
        })
     })
 }
