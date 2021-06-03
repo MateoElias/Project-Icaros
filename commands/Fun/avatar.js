@@ -10,7 +10,7 @@ module.exports = {
     .setColor('34cfeb')
     
     if(target){
-      embed.setImage(target.displayAvatarURL())
+      embed.setImage(target.displayAvatarURL({format: 'png', dynamic: true}))
     } else {
       embed.setImage(message.author.displayAvatarURL())
     }
