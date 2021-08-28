@@ -50,7 +50,7 @@ client.on('message', async message => {
         const cmd = args.shift().toLowerCase();
         if (cmd.length == 0) return;
         const command = client.commands.get(cmd)
-        if (!command) command = client.commands.get(client.aliases.get(cmd))
+        if (!command) return message.channel.send("Unable to find that command")
         if (command) command.run(client, message, args)
     })
 
